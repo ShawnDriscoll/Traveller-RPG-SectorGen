@@ -62,3 +62,9 @@ temp/
 *.spec
 build/
 dist/
+
+
+##########
+## Folders
+##########
+data/
