@@ -816,6 +816,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def actionQuitProg_triggered(self):
         log.info(__app__ + ' quiting...')
         log.info(__app__ + ' DONE.')
+        log.info('Logging ended.')
         self.close()
 
 
@@ -854,6 +855,7 @@ if __name__ == '__main__':
         print('OK')
         
         log.info(__app__ + ' stopped.')
+        log.info('Logging ended.')
     else:
         print()
         print('Thank you for giving', __app__, 'a try.')

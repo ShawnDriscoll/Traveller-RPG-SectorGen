@@ -583,7 +583,7 @@ def _hexagon(surface, color, pos, radius, thickness, see_thru=False):
 
 def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled', trade_code=False, see_thru=False, show_loc=True, show_grid=True, subxx=0, subyy=0):
     
-    log = logging.getLogger('PyMapGen_0.0.8b.mapper')
+    log = logging.getLogger('PyMapGen.mapper')
 
     # was information for this program asked for?
     if xx == 'info':
