@@ -1,0 +1,64 @@
+
+#############
+## PyDiceroll
+#############
+Logs/
+*.log
+
+
+#############
+## Windows
+#############
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+
+############
+## Python
+############
+__pycache__/
+
+
+##################
+## Python Packages
+##################
+*.egg
+*.egg-info
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+
+
+############
+## Jython
+############
+*$py.class
+
+
+#############
+## Temp Files
+#############
+temp/
+
+
+##############
+## Qt Designer
+##############
+*.ui
+*.qrc
+*.bat
+
+
+##############
+## PyInstaller
+##############
+*.spec
+build/
+dist/
