@@ -3,15 +3,21 @@
 
 **Traveller RPG SectorGen** is a Windows program for generating sectors.
 
+.. figure:: images/app_screen.png
+
 
 Notes
 -----
 
-.. figure:: images/app_screen.png
-
 **Traveller RPG SectorGen** is being developed using Python 3.9.7 and PyQt5.
+There are a few Python programs included.
 
-``SectorGen.py`` will generate 
+``SectorGen.py`` will generate a sector at origin 0,0. The sector density can be selected. it
+will create both raw CSV and JSON data files, and a Traveller 5 format sector file as well.
+
+(Optional) ``CSV_to_GEnie_converter.py`` will create a GEnie format file from the raw sector data generated.
+
+(Optional) ``PyMapGen.py`` will read the Traveller 5 format sector file and display it graphically using PyGame.
 
 
 
@@ -36,6 +42,14 @@ Requirements
 
    PyQt5 is the framework used for displaying the Window GUI and buttons, etc.
 
+* (Optional) **pyttsx3 2.90**
+
+   PyMapGen speaks in Zira's voice (her voice comes with Windows). Can be changed to a different voice in the source.
+
+* (Optional) **pygame 2.1.0**
+
+   PyGame is used to draw the maps. It's basically a Python wrapper for SDL 2.0.16, which PyGame includes.
+
 
 Warning
 -------
@@ -46,7 +60,7 @@ This code will not work with **Python 2.7-**.
 Not Using Python?
 -----------------
 
-You can always run the .EXE version for Windows 10 if you don't have the Python language installed.
+You can always run the .EXE versions for Windows 10 if you don't have the Python language installed.
 
 
 The Traveller game in all forms is owned by Far Future Enterprises. Copyright 1977 - 2022 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.
