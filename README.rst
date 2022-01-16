@@ -1,16 +1,19 @@
 **Traveller RPG SectorGen**
 ===========================
 
-
 **Traveller RPG SectorGen** is a Windows program for generating sectors.
 
 
 Notes
 -----
 
+.. figure:: images/app_screen.png
+
 **Traveller RPG SectorGen** is being developed using Python 3.9.7 and PyQt5.
 
-.. figure:: images/app_screen.png
+``SectorGen.py`` will generate 
+
+
 
 
 Requirements
