@@ -10,7 +10,7 @@ Notes
 
 **Traveller RPG SectorGen** is being developed using Python 3.9.7 and PyQt5.
 
-.. figure:: images/some_logo.png
+.. figure:: images/app_screen.png
 
 
 Requirements

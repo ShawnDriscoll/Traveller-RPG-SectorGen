@@ -1,7 +1,8 @@
 
 #############
-## PyDiceroll
+## Folders
 #############
+Data/
 Logs/
 *.log
 
@@ -62,9 +63,3 @@ temp/
 *.spec
 build/
 dist/
-
-
-##########
-## Folders
-##########
-data/
