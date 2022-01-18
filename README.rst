@@ -1,7 +1,8 @@
 .. image:: https://img.shields.io/github/stars/ShawnDriscoll/Traveller-RPG-SectorGen.svg
 	:target: https://github.com/ShawnDriscoll/Traveller-RPG-SectorGen/stargazers
 	
-	**Traveller RPG SectorGen**
+
+**Traveller RPG SectorGen**
 ===========================
 
 **Traveller RPG SectorGen** is a Windows program for generating sectors.
