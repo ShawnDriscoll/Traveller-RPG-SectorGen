@@ -61,6 +61,34 @@ Warning
 This code will not work with **Python 2.7-**.
 
 
+PyMapGen Usage
+--------------
+
+Click on a sector to center it.
+
+Dragging a sector (or pressing the arrow keys) will scroll the map.
+
+The mouse wheel will zoom the map in and out while pointing.
+
+Pressing **m** will toggle the computer's voice on/off.
+
+Pressing **h** will flip to a hex map(s) at different zoom levels.
+
+Pressing **r** will flip to a rectangle map.
+
+Pressing **c** will toggle solid/clear travel zones while zoomed in.
+
+Pressing **z** will toggle circle/hex/rectangle travel zones while zoomed in.
+
+Pressing **t** will toggle world UWP/TC while zoomed in.
+
+Pressing **l** will toggle the world system locations on/off.
+
+Pressing **g** will toggle the hex/rectangle grid on/off.
+
+Pressing **ESC** will exit the program.
+
+
 Not Using Python?
 -----------------
 
