@@ -1,6 +1,6 @@
 #
 #
-#   Generate a map from Traveller sector data
+#   Generate a map from Traveller 5 sector data
 #
 #####################################################################
 
@@ -8,7 +8,7 @@
 PyMapGen 0.0.8 Beta
 -------------------
 
-This program displays Traveller sectors and subsectors.
+This program displays Traveller 5 sectors and subsectors.
 
 The Traveller game in all forms is owned by Far Future Enterprises.
 Copyright 1977 - 2022 Far Future Enterprises.

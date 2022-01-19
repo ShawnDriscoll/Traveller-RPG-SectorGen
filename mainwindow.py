@@ -194,7 +194,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "SectorGen 0.1.0 (Beta)"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "SectorGen 0.2.0 (Beta)"))
         self.genButton.setText(_translate("MainWindow", "Generate"))
         self.label_1.setText(_translate("MainWindow", "TRAVELLER"))
         self.logo.setText(_translate("MainWindow", "1"))

@@ -43,8 +43,8 @@ with open('data/GEnie_' + sector_name + '_data.txt', 'w') as GEnie_file_out:
 
     # for row in reader:
     for row in sort:
-        #           [0]          [1]          [2]       [3]        [4]            [5]            [6]           [7]            [8]          [9]          [10]           [11]         [12]     [13]     [14]       [15]         [16]           [17]
-        # row = ['Location', 'World_Name', 'Starport', 'Size', 'Atmosphere', 'Hydrographics', 'Population', 'Government', 'Law_Level', 'Tech_Level', 'Trade_Codes', 'Travel_Code', 'Base', 'Pop_M', 'Belts', 'Gas_giants', 'Allegiance', 'Stellar_Data']
+        #           [0]          [1]          [2]       [3]        [4]            [5]            [6]           [7]            [8]          [9]          [10]           [11]         [12]     [13]     [14]       [15]        [16]        [17]          [18]            [19]
+        # row = ['Location', 'World_Name', 'Starport', 'Size', 'Atmosphere', 'Hydrographics', 'Population', 'Government', 'Law_Level', 'Tech_Level', 'Trade_Codes', 'Travel_Code', 'Base', 'Pop_M', 'Belts', 'Gas_giants', 'Worlds', 'Allegiance', 'Stellar_Data', 'Temperature']
         #if row[3] >='0' and row[6] >= '0': # Asteroids
         #if row[24] >= 'G': # nobles
         #if 'Oc' in row[10] or 'Wa' in row[10]: # ocean worlds
@@ -66,7 +66,7 @@ with open('data/GEnie_' + sector_name + '_data.txt', 'w') as GEnie_file_out:
             detail_line += row[11]
             while len(detail_line) < 51:
                 detail_line += ' '
-            detail_line += row[13] + row[14] + row[15] + ' ' + row[16] + ' ' + row[17]
+            detail_line += row[13] + row[14] + row[15] + ' ' + row[17] + ' ' + row[18]
             
             print(detail_line)
             

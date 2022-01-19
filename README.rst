@@ -5,7 +5,7 @@
 **Traveller RPG SectorGen**
 ===========================
 
-**Traveller RPG SectorGen** is a Windows program for generating sectors.
+**Traveller RPG SectorGen** is a Windows program for generating sectors, based on rules from Mongoose Traveller 2nd Edition.
 
 .. figure:: images/app_screen.png
 
