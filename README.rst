@@ -10,6 +10,13 @@
 .. figure:: images/app_screen.png
 
 
+New in v0.2.1b
+--------------
+
+Chance of Super-Earths being generated.
+This traveller 5 rule was previously removed, but then put back in as an option.
+
+
 Notes
 -----
 
@@ -22,7 +29,6 @@ will create both raw CSV and JSON data files, and a Traveller 5 format sector fi
 (Optional) ``CSV_to_GEnie_converter.py`` will create a GEnie format file from the raw sector data generated.
 
 (Optional) ``PyMapGen.py`` will read the Traveller 5 format sector file and display it graphically using PyGame.
-
 
 
 

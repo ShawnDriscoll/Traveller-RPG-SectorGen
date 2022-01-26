@@ -4,7 +4,7 @@
 ########################################################
 
 """
-SectorGen 0.2.0 Beta
+SectorGen 0.2.1 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -35,8 +35,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.2.0 (Beta)'
-__version__ = '0.2.0b'
+__app__ = 'SectorGen 0.2.1 (Beta)'
+__version__ = '0.2.1b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -78,6 +78,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sector_densityBox.setCurrentIndex(2)
         self.sector_densityBox.currentIndexChanged.connect(self.sector_densityBox_changed)
         self.sector_density_dm = 0
+        
+        self.super_earth_chance = False
+        self.super_earth_checkBox.toggled.connect(self.super_earth_checkBox_changed)
+        self.super_earth_checkBox.setChecked(self.super_earth_chance)
 
         self.popAboutDialog = aboutDialog()
         
@@ -386,7 +390,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.main_world_size = roll('2D-2')  
                     # from Traveller5
                     if self.main_world_size == 10:
-                        self.main_world_size = roll('1D+9')
+                        if self.super_earth_chance:
+                            self.main_world_size = roll('1D+9')
+                            #print(self.main_world_size)
 
                 #   Roll for Main World Atmosphere
 
@@ -948,6 +954,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #print(self.sector_density_dm)
         log.info('Sector Density DM ' + str(self.sector_density_dm) + ' was selected.')
 
+    def super_earth_checkBox_changed(self):
+        self.super_earth_chance = self.super_earth_checkBox.isChecked()
+        #print(self.super_earth_chance)
+
     def actionAbout_triggered(self):
         log.info(__app__ + ' show about...')
         self.popAboutDialog.show()
@@ -979,7 +989,7 @@ if __name__ == '__main__':
     
     trange = time.localtime()
     creation_time = datetime.datetime.now()
-    if trange[0] > 2022 or trange[1] > 13:
+    if trange[0] > 2022 or trange[1] > 4:
         
         log.warning('Beta time period has expired!')
         
