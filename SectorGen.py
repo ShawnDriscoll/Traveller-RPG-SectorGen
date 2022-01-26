@@ -383,12 +383,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                 #   Roll for Main World Size
 
-                    self.main_world_size = roll('2D6-2')                        
+                    self.main_world_size = roll('2D-2')  
+                    # from Traveller5
+                    if self.main_world_size == 10:
+                        self.main_world_size = roll('1D+9')
 
                 #   Roll for Main World Atmosphere
 
                     self.main_world_atmosphere = roll('FLUX') + self.main_world_size
-                    if self.main_world_atmosphere < 0:
+                    # from Traveller5
+                    if self.main_world_atmosphere < 0 or self.main_world_size == 0:
                         self.main_world_atmosphere = 0
                     if self.main_world_atmosphere > 15:
                         self.main_world_atmosphere = 15
@@ -396,8 +400,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 #   Roll for Main World Hydrographics
 
                     if self.hydro_calc_method == 'Based on Atmosphere':
+                        # from Mongoose Traveller 2nd Edition and Traveller5
                         self.main_world_hydrographics = roll('FLUX') + self.main_world_atmosphere
                     else:
+                        # from something else
                         self.main_world_hydrographics = roll('FLUX') + self.main_world_size
                         
                     if self.main_world_hydrographics < 0:
