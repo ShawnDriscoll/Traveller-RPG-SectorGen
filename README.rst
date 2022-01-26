@@ -14,7 +14,7 @@ New in v0.2.1b
 --------------
 
 Chance of Super-Earths being generated.
-This traveller 5 rule was previously removed, but then put back in as an option.
+This Traveller 5 rule was previously removed, but then put back in as an option.
 
 
 Notes
