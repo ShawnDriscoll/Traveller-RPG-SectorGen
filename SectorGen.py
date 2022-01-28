@@ -117,7 +117,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sn = [0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3]
         self.primary_star_type =   [' ', ' ', 'A', 'M', 'M', 'M', 'M', 'M', 'K', 'G', 'F', 'F', 'F']
         self.companion_star_type = [' ', ' ', 'A', 'F', 'F', 'G', 'G', 'K', 'K', 'M', 'M', 'M', 'M']
-        self.star_size = [' ', ' ', 'II', 'III', 'IV', 'V', 'V', 'V', 'V', 'V', 'V', 'VI', 'D']
+        self.star_size = ['   ', '   ', 'II ', 'III', 'IV ', 'V  ', 'V  ', 'V  ', 'V  ', 'V  ', 'V  ', 'VI ', 'D  ']
 
     #   Sound Tables
 
@@ -790,11 +790,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         star_rolled = 12
                     star_size_rolled = self.star_size[star_rolled]
                     if (self.stellar_data == 'K5' or self.stellar_data == 'M9') \
-                            and star_size_rolled == 'IV':
-                        star_size_rolled = 'V'
+                            and star_size_rolled == 'IV ':
+                        star_size_rolled = 'V  '
                     if (self.stellar_data == 'B0' or self.stellar_data == 'F4') \
-                            and star_size_rolled == 'IV':
-                        star_size_rolled = 'V'
+                            and star_size_rolled == 'IV ':
+                        star_size_rolled = 'V  '
                     self.stellar_data += ' ' + star_size_rolled
                     previous_star_size_rolled = star_rolled
                     star_count += -1
@@ -817,11 +817,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                             star_rolled = 12
                         star_size_rolled = self.star_size[star_rolled]
                         if (companion_data == 'K5' or companion_data == 'M9') \
-                                and star_size_rolled == 'IV':
-                            star_size_rolled = 'V'
+                                and star_size_rolled == 'IV ':
+                            star_size_rolled = 'V  '
                         if (companion_data == 'B0' or companion_data == 'F4') \
-                                and star_size_rolled == 'IV':
-                            star_size_rolled = 'V'
+                                and star_size_rolled == 'IV ':
+                            star_size_rolled = 'V  '
                         self.stellar_data += ' ' + companion_data + ' ' + star_size_rolled
 
                 # Maybe World has no name? Just a UWP.
@@ -1014,6 +1014,10 @@ if __name__ == '__main__':
         print()
         print('----------------------------')
         print(__author__)
+        print()
+        print('The Traveller game in all forms is owned by Far Future Enterprises.')
+        print('Copyright 1977 - 2022 Far Future Enterprises.')
+        print('Traveller is a registered trademark of Far Future Enterprises.')
         print()
         
         log.info(__app__ + ' started, and running...')

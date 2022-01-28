@@ -488,5 +488,9 @@ if __name__ == '__main__':
         print('----------------------------')
         print(__author__)
         print()
+        print('The Traveller game in all forms is owned by Far Future Enterprises.')
+        print('Copyright 1977 - 2022 Far Future Enterprises.')
+        print('Traveller is a registered trademark of Far Future Enterprises.')
+        print()
         
         main(voice_muted, grid_style, zone_style, trade_code, see_thru, show_loc, show_grid)

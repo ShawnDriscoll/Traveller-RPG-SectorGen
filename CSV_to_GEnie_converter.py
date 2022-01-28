@@ -15,10 +15,15 @@ with open('data/raw_sector_data.csv', 'r') as CSV_file_in:
     #sort = sorted(reader, key=operator.itemgetter(2,3,4,5,6,7,8,9,10)) # UWP
     #sort = sorted(reader, key=operator.itemgetter(1)) # World_Name
     sort = sorted(reader, key=operator.itemgetter(0)) # location
-
-    sector_name = 'sector'
     
-with open('data/GEnie_' + sector_name + '_data.txt', 'w') as GEnie_file_out:
+    sector_filename = ''
+    while sector_filename == '':
+        sector_filename = input('Enter sector name for this data: ')
+        if sector_filename != '':
+            sector_filename = sector_filename.replace(' ', '_')
+            print()
+    
+with open('data/GEnie_' + sector_filename + '_sector_data.txt', 'w') as GEnie_file_out:
 
     total_duplicates = 0
     total_count = 0
@@ -26,8 +31,7 @@ with open('data/GEnie_' + sector_name + '_data.txt', 'w') as GEnie_file_out:
 
     dup_location = ''
 
-    column_headers = sector_name + '''
- 1-13: Name
+    column_headers = ''' 1-13: Name
 15-18: HexNbr
 20-28: UWP
    31: Bases

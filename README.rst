@@ -30,6 +30,7 @@ will create both raw CSV and JSON data files, and a Traveller 5 format sector fi
 
 (Optional) ``PyMapGen.py`` will read the Traveller 5 format sector file and display it graphically using PyGame.
 
+(Optional) ``CSV_to_WBS_converter.py`` will create an H&E WBS format file from the raw sector data generated.
 
 
 Requirements
