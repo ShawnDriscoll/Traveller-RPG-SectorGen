@@ -105,6 +105,8 @@ You can always run the .EXE versions for Windows 10 if you don't have the Python
 
 * v0.2.1b
 
+  A CSV to WBS converter is included for creating H&E WBS formatted files.
+  
   Chance of Super-Earths being generated. This Traveller 5 rule was previously removed, but then put back in as an option.
 
 * v0.2.0b
