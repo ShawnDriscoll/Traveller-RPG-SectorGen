@@ -101,6 +101,23 @@ Not Using Python?
 You can always run the .EXE versions for Windows 10 if you don't have the Python language installed.
 
 
+**Known History**
+
+* v0.2.1b
+
+  Chance of Super-Earths being generated. This Traveller 5 rule was previously removed, but then put back in as an option.
+
+* v0.2.0b
+
+  Sectors are now generated in Traveller 5 format.
+  
+  A lot of the Traveller 5 world generation rules were removed, while keeping the Mongoose Traveller 2nd Edition rules. No more 3,000 trillion population sectors.
+
+* v0.0.1b
+
+  Initial release.
+
+
 The Traveller game in all forms is owned by Far Future Enterprises. Copyright 1977 - 2022 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.
 
 
