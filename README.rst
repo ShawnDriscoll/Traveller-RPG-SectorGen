@@ -74,7 +74,7 @@ Click on a sector to center it.
 
 Dragging a sector (or pressing the arrow keys) will scroll the map.
 
-The mouse wheel will zoom the map in and out while pointing.
+The ``mouse wheel`` will zoom the map in and out while pointing.
 
 Pressing ``m`` will toggle the computer's voice on/off.
 
