@@ -100,6 +100,28 @@ Not Using Python?
 
 You can always run the .EXE versions for Windows 10 if you don't have the Python language installed.
 
+.. |ss| raw:: html
+
+    <strike>
+
+.. |se| raw:: html
+
+    </strike>
+
+Things To-Do
+------------
+
+| Add trade routes.
+| Instruction manual.
+| Cheat codes.
+|ss|
+
+| Put back "some" Traveller 5 stuff that was removed.
+| Add number of worlds for each system (a T5 trait).
+| Add option for Super-Earths (another T5 trait).
+| Start on a To-Do.
+
+|se|
 
 **Known History**
 
@@ -108,6 +130,8 @@ You can always run the .EXE versions for Windows 10 if you don't have the Python
   A CSV to WBS converter is included for creating H&E WBS formatted files.
   
   Chance of Super-Earths being generated. This Traveller 5 rule was previously removed, but then put back in as an option.
+  
+  Added number of worlds for each system.
 
 * v0.2.0b
 
