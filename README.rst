@@ -10,13 +10,6 @@
 .. figure:: images/app_screen.png
 
 
-New in v0.2.2b
---------------
-
-Chance of Super-Earths being generated.
-This Traveller 5 rule was previously removed, but then put back in as an option.
-
-
 Notes
 -----
 
