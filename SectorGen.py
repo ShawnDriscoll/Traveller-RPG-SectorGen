@@ -98,7 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.hydroBox.currentIndexChanged.connect(self.hydroBox_changed)
 
         self.sector_densityBox.addItem('Rift')
-        self.sector_densityBox.addItem('Sparce')
+        self.sector_densityBox.addItem('Sparse')
         self.sector_densityBox.addItem('Standard')
         self.sector_densityBox.addItem('Dense')
         self.sector_densityBox.setCurrentIndex(2)
