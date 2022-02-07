@@ -10,7 +10,7 @@
 .. figure:: images/app_screen.png
 
 
-New in v0.2.1b
+New in v0.2.2b
 --------------
 
 Chance of Super-Earths being generated.
@@ -20,7 +20,7 @@ This Traveller 5 rule was previously removed, but then put back in as an option.
 Notes
 -----
 
-**Traveller RPG SectorGen** is being developed using Python 3.9.7 and PyQt5.
+**Traveller RPG SectorGen** is being developed using Python 3.9.10 and PyQt5.
 There are a few Python programs included.
 
 ``SectorGen.py`` will generate a sector at origin 0,0. The sector density can be selected. It
@@ -40,9 +40,9 @@ Requirements
 
   It might not work in OSX or Linux.
 
-* **Python 3.9.7**
+* **Python 3.9.10**
    
-  This code was written using the C implementation of Python version 3.9.7. Also known as CPython.
+  This code was written using the C implementation of Python version 3.9.10. Also known as CPython.
 
 * **colorama 0.4.4**
 
@@ -124,6 +124,10 @@ Things To-Do
 |se|
 
 **Known History**
+
+* v0.2.2b
+
+  Now displays number of worlds generated. Helps with letting user know that sector generation has completed.
 
 * v0.2.1b
 

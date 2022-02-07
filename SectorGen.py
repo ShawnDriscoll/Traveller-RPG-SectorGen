@@ -4,7 +4,7 @@
 ########################################################
 
 """
-SectorGen 0.2.1 Beta
+SectorGen 0.2.2 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -27,6 +27,7 @@ from PyQt5.QtWidgets import *
 import time
 from mainwindow import Ui_MainWindow
 from aboutdialog import Ui_aboutDialog
+from completeddialog import Ui_completedDialog
 from rpg_tools.PyDiceroll import roll
 import os
 import logging
@@ -35,8 +36,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.2.1 (Beta)'
-__version__ = '0.2.1b'
+__app__ = 'SectorGen 0.2.2 (Beta)'
+__version__ = '0.2.2b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -52,6 +53,31 @@ class aboutDialog(QDialog, Ui_aboutDialog):
         log.info('PyQt5 aboutDialog closing...')
         self.close()
 
+class completedDialog(QDialog, Ui_completedDialog):
+    def __init__(self):
+        '''
+        Open the Completed dialog window
+        '''
+        super().__init__()
+        log.info('PyQt5 completedDialog initializing...')
+        self.setWindowFlags(Qt.Drawer | Qt.WindowStaysOnTopHint)
+        self.setupUi(self)
+        self.completedOKButton.clicked.connect(self.acceptOKButtonClicked)
+        self.numworldsDisplay.setText('')
+        log.info('PyQt5 completedDialog initialized.')
+
+    def acceptOKButtonClicked(self):
+        '''
+        Close the PyQt5 Completed dialog window
+        '''
+        log.info('PyQt5 completedDialog closing...')
+        self.close()
+    
+    def showNumworlds(self):
+        '''
+        Show the number of worlds generated in the PyQt5 Completed dialog window
+        '''
+        self.show()
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -84,6 +110,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.super_earth_checkBox.setChecked(self.super_earth_chance)
 
         self.popAboutDialog = aboutDialog()
+
+        self.popCompletedDialog = completedDialog()
         
         #   UPP Code Table
 
@@ -323,7 +351,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         mapper_file_out.write('\n\nHex  Name                 UWP       Remarks              {Ix}   (Ex)    [Cx]   N B  Z PBG W  A    Stellar')
         mapper_file_out.write(  '\n---- -------------------- --------- -------------------- ------ ------- ------ - -- - --- -- ---- --------------')
 
-        worlds_rolled = 0
+        self.worlds_rolled = 0
 
     #   Make the worlds
 
@@ -851,7 +879,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                     self.hex_code[self.main_world_government], self.hex_code[self.main_world_law_level], \
                                     self.hex_code[self.main_world_tech_level], self.main_world_trade_codes, self.main_world_travel_code))
                     
-                    worlds_rolled += 1
+                    self.worlds_rolled += 1
 
                     csv_writer.writerow([self.main_world_location,
                                         self.main_world_name,
@@ -940,7 +968,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         json_file_out.close()
         mapper_file_out.close()
 
-        print('Worlds rolled:', worlds_rolled)
+        print('Worlds rolled:', self.worlds_rolled)
+        self.showingNumworlds()
 
     def hydroBox_changed(self):
         self.hydro_calc_choices = ['Based on Atmosphere', 'Based on Size']
@@ -957,6 +986,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def super_earth_checkBox_changed(self):
         self.super_earth_chance = self.super_earth_checkBox.isChecked()
         #print(self.super_earth_chance)
+        log.info('Chance for Super-Earth: ' + str(self.super_earth_chance))
 
     def actionAbout_triggered(self):
         log.info(__app__ + ' show about...')
@@ -967,6 +997,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         log.info(__app__ + ' DONE.')
         log.info('Logging ended.')
         self.close()
+    
+    def showingNumworlds(self):
+        log.info('Number of worlds: ' + str(self.worlds_rolled))
+        self.popCompletedDialog.numworldsDisplay.setText('Number of worlds: ' + str(self.worlds_rolled))
+        self.popCompletedDialog.showNumworlds()        
 
 
 if __name__ == '__main__':
