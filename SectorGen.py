@@ -969,7 +969,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         mapper_file_out.close()
 
         print('Worlds rolled:', self.worlds_rolled)
-        self.showingNumworlds()
+        self.passingNumworlds()
 
     def hydroBox_changed(self):
         self.hydro_calc_choices = ['Based on Atmosphere', 'Based on Size']
@@ -998,7 +998,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         log.info('Logging ended.')
         self.close()
     
-    def showingNumworlds(self):
+    def passingNumworlds(self):
         log.info('Number of worlds: ' + str(self.worlds_rolled))
         self.popCompletedDialog.numworldsDisplay.setText('Number of worlds: ' + str(self.worlds_rolled))
         self.popCompletedDialog.showNumworlds()        
