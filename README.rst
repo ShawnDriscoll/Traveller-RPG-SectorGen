@@ -106,6 +106,7 @@ Things To-Do
 
 | Add trade routes.
 | Instruction manual.
+| Add proper allegiance distribution across a sector.
 | Cheat codes.
 |ss|
 
