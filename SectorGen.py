@@ -4,7 +4,7 @@
 ########################################################
 
 """
-SectorGen 0.2.2 Beta
+SectorGen 0.2.3 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -36,8 +36,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.2.2 (Beta)'
-__version__ = '0.2.2b'
+__app__ = 'SectorGen 0.2.3 (Beta)'
+__version__ = '0.2.3b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -104,6 +104,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.sector_densityBox.setCurrentIndex(2)
         self.sector_densityBox.currentIndexChanged.connect(self.sector_densityBox_changed)
         self.sector_density_dm = 0
+        log.info('No Sector Density DM was selected.')
         
         self.super_earth_chance = False
         self.super_earth_checkBox.toggled.connect(self.super_earth_checkBox_changed)
@@ -981,7 +982,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.density_choices = [-2, -1, 0, 1]
         self.sector_density_dm = self.density_choices[self.sector_densityBox.currentIndex()]
         #print(self.sector_density_dm)
-        log.info('Sector Density DM ' + str(self.sector_density_dm) + ' was selected.')
+        if self.sector_density_dm == 0:
+            log.info('No Sector Density DM was selected.')
+        else:
+            if self.sector_density_dm > 0:
+                temp_dm = '+'
+            else:
+                temp_dm = ''
+            log.info('A Sector Density DM of ' + temp_dm + str(self.sector_density_dm) + ' was selected.')
 
     def super_earth_checkBox_changed(self):
         self.super_earth_chance = self.super_earth_checkBox.isChecked()

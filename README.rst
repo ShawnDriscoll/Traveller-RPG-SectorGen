@@ -119,6 +119,10 @@ Things To-Do
 
 **Known History**
 
+* v0.2.3b
+
+  Sector Density DM is now properly logged.
+
 * v0.2.2b
 
   Now displays number of worlds generated. Helps with letting user know that sector generation has completed.
