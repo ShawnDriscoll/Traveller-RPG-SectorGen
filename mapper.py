@@ -8,8 +8,8 @@ import sys
 from constants import __app__
 from constants import *
 
-__version__ = '1.0'
-__release__ = '1.0.3b'
+__version__ = '1.1'
+__release__ = '1.1.0b'
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
 
 mapper_log = logging.getLogger('mapper')
@@ -417,6 +417,7 @@ water_world = pygame.image.load('images/water_100.png').convert_alpha()
 fluid_world = pygame.image.load('images/fluid_100.png').convert_alpha()
 vacuum_world = pygame.image.load('images/vacuum.png').convert_alpha()
 asteroid = pygame.image.load('images/asteroid_0_alternate.png').convert_alpha()
+dieback_world = pygame.image.load('images/dieback_0.png').convert_alpha()
 generic_10 = pygame.image.load('images/generic_10.png').convert_alpha()
 generic_20 = pygame.image.load('images/generic_20.png').convert_alpha()
 generic_30 = pygame.image.load('images/generic_30.png').convert_alpha()
@@ -434,7 +435,7 @@ world_scale = 4
 #     print 8 + jj*4,
 # print
 
-def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere, world_hydrographics, world_population):
+def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere, world_hydrographics, world_population, world_trade):
     world_image =''
     if world_atmosphere >= 4 \
                 and world_atmosphere <= 9 \
@@ -532,6 +533,12 @@ def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere
         x, y = pos
         w, h = world_image.get_size()
         surface.blit(world_image, (x-w/2, y-h/2))
+    if 'Di' in world_trade:
+        world_image = dieback_world
+        world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
+        x, y = pos
+        w, h = world_image.get_size()
+        surface.blit(world_image, (x-w/2, y-h/2))
     if world_image == '':
         world_image = eval('generic_' + str(world_hydrographics * 10))
         world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
@@ -595,7 +602,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
 
     # was information for this program asked for?
     if xx == 'info':
-        ver = 'mapper, release version ' + __release__ + ' for Python 3.9.7'
+        ver = 'mapper, release version ' + __release__ + ' for Python 3.9.10'
         mapper_log.info('Reporting: mapper release version: %s' % __release__)
         return __version__, ver
 
@@ -1017,7 +1024,8 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                     world_population = hex_code[line[world_tab+4]]
                                     world_name = line[name_tab:name_tab+19].strip()
                                     world_name_color = white
-                                    if 'Cx' in line[remarks_tab:remarks_tab+20] or 'Cp' in line[remarks_tab:remarks_tab+20]:
+                                    world_trade = line[remarks_tab:remarks_tab+20]
+                                    if 'Cx' in world_trade or 'Cp' in world_trade:
                                         world_name_color = red
                                     if world_population >= 10:
                                         world_name = world_name.upper()
@@ -1025,7 +1033,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                     world_name_text = world_name_font.render(world_name, True, world_name_color)
                                     world_uwp_font = pygame.font.SysFont('Eras ITC Demi', 14, False, False)
                                     if trade_code:
-                                        world_uwp_text = world_uwp_font.render(line[remarks_tab:remarks_tab+20], True, white)
+                                        world_uwp_text = world_uwp_font.render(world_trade, True, white)
                                     else:
                                         world_uwp_text = world_uwp_font.render(line[world_tab:world_tab+9], True, white)
                                     if hex_x // 2 == hex_x / 2.0:
@@ -1056,7 +1064,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                             _planet(screen, color, (int((temp_x-1)*64 + 33 + x*512),
                                                                     int((temp_y-1)*70.4) + 70),
                                                                     int(zoom), 0,
-                                                                    world_size, world_atmosphere, world_hydrographics, world_population)
+                                                                    world_size, world_atmosphere, world_hydrographics, world_population, world_trade)
                                             
                                             screen.blit(world_name_text, [int((temp_x-1)*64 + 32 - len(world_name)*7/2 + x*512),
                                                                           int((temp_y-1)*70.4) + 46])
@@ -1087,7 +1095,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                             _planet(screen, color, (int((temp_x-1)*64 + 24 + x*512),
                                                                     int((temp_y-1)*70.4) + 67),
                                                                     int(zoom), 0,
-                                                                    world_size, world_atmosphere, world_hydrographics, world_population)
+                                                                    world_size, world_atmosphere, world_hydrographics, world_population, world_trade)
     
                                             screen.blit(world_name_text, [int((temp_x-1)*64 + 24 - len(world_name)*7/2 + x*512),
                                                                           int((temp_y-1)*70.4) + 46])
@@ -1118,7 +1126,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                             _planet(screen, color, (int((temp_x-1)*64 + 33 + x*512),
                                                                     int((temp_y-1)*70.4) + 37),
                                                                     int(zoom), 0,
-                                                                    world_size, world_atmosphere, world_hydrographics, world_population)
+                                                                    world_size, world_atmosphere, world_hydrographics, world_population, world_trade)
                                             
                                             screen.blit(world_name_text, [int((temp_x-1)*64 + 32 - len(world_name)*7/2 + x*512),
                                                                           int((temp_y-1)*70.4) + 12])
@@ -1149,7 +1157,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                             _planet(screen, color, (int((temp_x-1)*64 + 24 + x*512),
                                                                     int((temp_y-1)*70.4) + 33),
                                                                     int(zoom), 0,
-                                                                    world_size, world_atmosphere, world_hydrographics, world_population)
+                                                                    world_size, world_atmosphere, world_hydrographics, world_population, world_trade)
                                         
                                             screen.blit(world_name_text, [int((temp_x-1)*64 + 24 - len(world_name)*7/2 + x*512),
                                                                           int((temp_y-1)*70.4) + 12])

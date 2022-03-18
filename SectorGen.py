@@ -4,7 +4,7 @@
 ########################################################
 
 """
-SectorGen 0.2.3 Beta
+SectorGen 0.3.0 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -36,8 +36,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.2.3 (Beta)'
-__version__ = '0.2.3b'
+__app__ = 'SectorGen 0.3.0 (Beta)'
+__version__ = '0.3.0b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -585,14 +585,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     if self.main_world_population == 0 \
                                     and self.main_world_government == 0 \
                                     and self.main_world_law_level == 0:
-                        self.main_world_trade_code[self.trade_index] = 'Ba'
-                        self.main_world_trade_class[self.trade_index] = 'Barren'
-                        if roll('1D6') > 2:
-                            self.main_world_tech_level = 0
-                        else:
-                            self.main_world_tech_level = roll('3D-3')
-                            self.main_world_travel_code = '      R'
-                        self.trade_index += 1
+                        if self.world_starport_class[self.main_world_starport] == 'E' \
+                                        or self.world_starport_class[self.main_world_starport] == 'X':
+                            if roll('1D3') > 1:
+                                self.main_world_tech_level = 0
+                                self.main_world_trade_code[self.trade_index] = 'Ba'
+                                self.main_world_trade_class[self.trade_index] = 'Barren'
+                            else:
+                                self.main_world_tech_level = roll('3D-3')
+                                self.main_world_trade_code[self.trade_index] = 'Di'
+                                self.main_world_trade_class[self.trade_index] = 'Dieback'
+                                self.main_world_travel_code = '      R'
+                            self.trade_index += 1
                     if self.main_world_starport >= 2 and self.main_world_starport <= 4:
                         if roll('1D3') == 1:
                             self.main_world_trade_code[self.trade_index] = 'Cp'
@@ -1032,7 +1036,7 @@ if __name__ == '__main__':
     
     trange = time.localtime()
     creation_time = datetime.datetime.now()
-    if trange[0] > 2022 or trange[1] > 4:
+    if trange[0] > 2022 or trange[1] > 5:
         
         log.warning('Beta time period has expired!')
         

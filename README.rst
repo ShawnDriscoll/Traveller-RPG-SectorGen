@@ -104,6 +104,7 @@ You can always run the .EXE versions for Windows 10 if you don't have the Python
 Things To-Do
 ------------
 
+| Add more world types.
 | Add trade routes.
 | Instruction manual.
 | Add proper allegiance distribution across a sector.
@@ -118,6 +119,10 @@ Things To-Do
 |se|
 
 **Known History**
+
+* v0.3.0b
+
+  A differentiation has now been made between barren and dieback worlds. New graphic will follow for PyMapGen.
 
 * v0.2.3b
 
