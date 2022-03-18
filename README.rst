@@ -120,6 +120,10 @@ Things To-Do
 
 **Known History**
 
+* v0.3.1b
+
+  Corrected values for starports.
+
 * v0.3.0b
 
   A differentiation has now been made between barren and dieback worlds. New graphic will follow for PyMapGen.

@@ -4,7 +4,7 @@
 ########################################################
 
 """
-SectorGen 0.3.0 Beta
+SectorGen 0.3.1 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -36,8 +36,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.3.0 (Beta)'
-__version__ = '0.3.0b'
+__app__ = 'SectorGen 0.3.1 (Beta)'
+__version__ = '0.3.1b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -597,7 +597,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                 self.main_world_trade_class[self.trade_index] = 'Dieback'
                                 self.main_world_travel_code = '      R'
                             self.trade_index += 1
-                    if self.main_world_starport >= 2 and self.main_world_starport <= 4:
+                    if self.world_starport_class[self.main_world_starport] == 'A':
                         if roll('1D3') == 1:
                             self.main_world_trade_code[self.trade_index] = 'Cp'
                             self.main_world_trade_class[self.trade_index] = 'Subsector Capital'
