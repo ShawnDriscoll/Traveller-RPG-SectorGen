@@ -1197,8 +1197,12 @@ if __name__ == '__main__':
     print()
     if len(sys.argv) < 2:
         print("     Type 'mapper.py -h' for help")
+        print("     Type 'mapper.py -v' for version information")
     elif sys.argv[1] in ['-h', '/h', '--help', '-?', '/?']:
         print('     mapper is a module (containing a display_map function)')
         print('     that needs to be imported by PyMapGen.')
+    elif sys.argv[1] in ['-v', '/v', '--version', '-V', '/V']:
+        print('     mapper.py version ' + __version__)
     else:
         print("     Type 'mapper.py -h' for help")
+        print("     Type 'mapper.py -v' for version information")
