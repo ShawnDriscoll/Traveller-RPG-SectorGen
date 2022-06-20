@@ -1,10 +1,10 @@
 #
-#   Python 3.9 Sector Generator
+#   Python 3.9.11 Sector Generator
 #
 ########################################################
 
 """
-SectorGen 0.3.1 Beta
+SectorGen 0.4.0 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -36,8 +36,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.3.1 (Beta)'
-__version__ = '0.3.1b'
+__app__ = 'SectorGen 0.4.0 (Beta)'
+__version__ = '0.4.0b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -97,14 +97,32 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.hydroBox.setCurrentIndex(0)
         self.hydroBox.currentIndexChanged.connect(self.hydroBox_changed)
 
-        self.sector_densityBox.addItem('Rift')
-        self.sector_densityBox.addItem('Sparse')
-        self.sector_densityBox.addItem('Standard')
-        self.sector_densityBox.addItem('Dense')
-        self.sector_densityBox.setCurrentIndex(2)
-        self.sector_densityBox.currentIndexChanged.connect(self.sector_densityBox_changed)
-        self.sector_density_dm = 0
-        log.info('No Sector Density DM was selected.')
+        self.stellar_densityBox.addItem('Extra Galactic: 1%')
+        self.stellar_densityBox.addItem('Rift: 3%')
+        self.stellar_densityBox.addItem('Sparse: 17%')
+        self.stellar_densityBox.addItem('Scattered: 33%')
+        self.stellar_densityBox.addItem('Standard: 50%')
+        self.stellar_densityBox.addItem('Dense: 66%')
+        self.stellar_densityBox.addItem('Cluster: 83%')
+        self.stellar_densityBox.addItem('Core: 91%')
+        self.stellar_densityBox.setCurrentIndex(4)
+        self.stellar_densityBox.currentIndexChanged.connect(self.stellar_densityBox_changed)
+        self.stellar_density = 50
+        log.info('Default Stellar Density is Standard ' + str(self.stellar_density) + '%.')
+
+        self.allegianceBox.addItem('As: Aslan Hierate')
+        self.allegianceBox.addItem('Cs: Client State')
+        self.allegianceBox.addItem('Im: Third Imperium')
+        self.allegianceBox.addItem('Na: Non-Aligned, Human-dominated')
+        self.allegianceBox.addItem('So: Solomani Confederation')
+        self.allegianceBox.addItem('Va: Non-Aligned, Vargr-dominated')
+        self.allegianceBox.addItem('Zh: Zhodani Consulate')
+        self.allegianceBox.addItem('Random')
+        self.allegianceBox.setCurrentIndex(2)
+        self.allegiance = 'Im'
+        log.info('Default Allegiance is Im: Third Imperium.')
+        self.random_allegiance = False
+        self.allegianceBox.currentIndexChanged.connect(self.allegianceBox_changed)
         
         self.super_earth_chance = False
         self.super_earth_checkBox.toggled.connect(self.super_earth_checkBox_changed)
@@ -293,11 +311,69 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.sector_name = chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
 
+        proper = False
+        while not(proper):
+            temp = self.CC
+            while temp == self.CC:
+                temp = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+            self.s_type = temp
+            self.pick_sound()
+            self.word = self.sound
+            building = True
+            while building:
+                syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                while temp == self.CC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
+                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                while temp == self.V and (syllable == self.V or syllable == self.VC):
+                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                while temp == self.CV and (syllable == self.V or syllable == self.VC):
+                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                while temp == self.VC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
+                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                while temp == self.CVC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
+                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                if temp == self.VC or temp == self.CVC:
+                    building = False
+                else:
+                    self.s_type = syllable
+                    self.pick_sound()
+                    self.word += self.sound
+                    temp = syllable
+
+            if len(self.word) > 3 and len(self.word) < 14:
+                proper = True
+
+        name_variance = roll('d100')
+        
+        #print(name_variance)
+
+        if name_variance <= 60:
+            if name_variance >= 45:
+                self.sector_name += ' ' + chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
+            elif name_variance >= 35:
+                self.sector_name += ' ' + 'Alpha'
+            elif name_variance >= 25:
+                self.sector_name += ' ' + 'Beta'
+            elif name_variance >= 15:
+                self.sector_name += ' ' + 'Gamma'
+            elif name_variance >= 10:
+                self.sector_name += ' ' + 'Reaches'
+            elif name_variance >= 7:
+                self.sector_name += ' ' + 'Sector'
+            elif name_variance >= 6:
+                self.sector_name += ' ' + 'Frontier'
+            elif name_variance >= 4:
+                self.sector_name += ' ' + 'UNEXPLORED'
+            elif name_variance >= 2:
+                self.sector_name += ' ' + 'UNKNOWN'
+
+        #print(self.sector_name)
+
         mapper_file_out.write('\n\n# ' + self.sector_name)
         mapper_file_out.write('\n# 0,0')
         mapper_file_out.write('\n\n# Name: ' + self.sector_name)
         mapper_file_out.write('\n\n# Milieu: M1105')
-        mapper_file_out.write('\n\n# Credits: ' + self.sector_name + ' sector was randomly generated by SectorGen.py')
+        mapper_file_out.write('\n\n# Credits: ' + self.sector_name + ' sector was randomly generated by ' + __app__)
         mapper_file_out.write('\n\n# Author: Shawn Driscoll https://www.youtube.com/user/ShawnDriscollCG')
         mapper_file_out.write('\n# Source: Rules from Mongoose Traveller 2nd Edition, and a smidgen from Traveller 5.10\n')
 
@@ -359,7 +435,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for hex_grid_col in range(32):
             for hex_grid_row in range(40):
 
-                if roll('1d6') + self.sector_density_dm >= 4:
+                if roll('d100') <= self.stellar_density:
                         
                 #   Get World Name
             
@@ -779,21 +855,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.worlds = str(1 + int(self.planetoid_belts) + int(self.gas_giants) + roll('2D'))
                 
                 #   Allegiance?
-                
-                    self.allegiance = 'Im'
-                    temp = roll('D100')
-                    if temp > 50:
-                        self.allegiance = 'Cs'
-                    if temp > 80:
-                        self.allegiance = 'Na'
-                    if temp > 90:
-                        self.allegiance = 'Va'
-                    if temp > 94:
-                        self.allegiance = 'So'
-                    if temp > 97:
-                        self.allegiance = 'As'
-                    if temp == 100:
-                        self.allegiance = 'Zh'
+
+                    if self.random_allegiance is True:
+                        self.allegiance = 'Im'
+                        temp = roll('D100')
+                        if temp > 50:
+                            self.allegiance = 'Cs'
+                        if temp > 80:
+                            self.allegiance = 'Na'
+                        if temp > 90:
+                            self.allegiance = 'Va'
+                        if temp > 94:
+                            self.allegiance = 'So'
+                        if temp > 97:
+                            self.allegiance = 'As'
+                        if temp == 100:
+                            self.allegiance = 'Zh'
                     
                 #   System Nature
                 
@@ -982,18 +1059,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #print(self.hydro_calc_method)
         log.info("'" + self.hydro_calc_method + "'" + ' was selected.')
 
-    def sector_densityBox_changed(self):
-        self.density_choices = [-2, -1, 0, 1]
-        self.sector_density_dm = self.density_choices[self.sector_densityBox.currentIndex()]
-        #print(self.sector_density_dm)
-        if self.sector_density_dm == 0:
-            log.info('No Sector Density DM was selected.')
+    def stellar_densityBox_changed(self):
+        self.density_choices = [1, 3, 17, 33, 50, 66, 83, 91]
+        self.stellar_density = self.density_choices[self.stellar_densityBox.currentIndex()]
+        #print(self.stellar_density)
+        log.info('A Stellar Density of ' + str(self.stellar_density) + '% was selected.')
+
+    def allegianceBox_changed(self):
+        self.allegiance_choices = ['As', 'Cs', 'Im', 'Na', 'So', 'Va', 'Zh']
+        if self.allegianceBox.currentIndex() == 7:
+            self.random_allegiance = True
+            log.info('Random Allegiance was selected.')
         else:
-            if self.sector_density_dm > 0:
-                temp_dm = '+'
-            else:
-                temp_dm = ''
-            log.info('A Sector Density DM of ' + temp_dm + str(self.sector_density_dm) + ' was selected.')
+            self.allegiance = self.allegiance_choices[self.allegianceBox.currentIndex()]
+            self.random_allegiance = False
+            log.info('Allegiance "' + self.allegiance + '" was selected.')
 
     def super_earth_checkBox_changed(self):
         self.super_earth_chance = self.super_earth_checkBox.isChecked()
@@ -1036,7 +1116,7 @@ if __name__ == '__main__':
     
     trange = time.localtime()
     creation_time = datetime.datetime.now()
-    if trange[0] > 2022 or trange[1] > 5:
+    if trange[0] > 2022 or trange[1] > 11:
         
         log.warning('Beta time period has expired!')
         
@@ -1056,8 +1136,10 @@ if __name__ == '__main__':
     else:
         print()
         print('Thank you for giving', __app__, 'a try.')
+        log.info(__app__ + ' looking for PyDiceroll...')
         vernum, release = roll('info')
         print('This program uses', release)
+        log.info(__app__ + ' found ' + release + '.')
         print()
         print('----------------------------')
         print(__author__)

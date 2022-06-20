@@ -13,7 +13,7 @@
 Notes
 -----
 
-**Traveller RPG SectorGen** is being developed using Python 3.9.10 and PyQt5.
+**Traveller RPG SectorGen** is being developed using Python 3.9.11 and PyQt5.
 There are a few Python programs included.
 
 ``SectorGen.py`` will generate a sector at origin 0,0. The sector density can be selected. It
@@ -33,9 +33,9 @@ Requirements
 
   It might not work in OSX or Linux.
 
-* **Python 3.9.10**
+* **Python 3.9.11**
    
-  This code was written using the C implementation of Python version 3.9.10. Also known as CPython.
+  This code was written using the C implementation of Python version 3.9.11. Also known as CPython.
 
 * **colorama 0.4.4**
 
@@ -119,6 +119,14 @@ Things To-Do
 |se|
 
 **Known History**
+
+* v0.4.0b
+
+  Allegiance selection has been added.
+  
+  Sector Density is now Stellar Density (in accordance with T5). Its range was increased, and uses percentages now.
+  
+  Small edits made to Sector naming.
 
 * v0.3.1b
 

@@ -6,7 +6,7 @@ First, install the included ERASDEMI, OPTIMA, and T5-9000-Symbols fonts.
 To use this program, run the sectorgen.exe file.
 
 
-WARNING: I'm not responsible for any harm caused by using this software for any version of Traveller other than Mongoose Traveller.
+WARNING: I'm not responsible for any harm caused by using this software for any version of Traveller other than Mongoose Traveller 2nd Edition or Traveller 5.10.
 
 -Shawn
 shawndriscoll@hotmail.com
