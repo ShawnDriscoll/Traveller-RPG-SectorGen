@@ -35,13 +35,9 @@ Requirements
   It might not work in OSX or Linux.
 
 * **Python 3.9.11**
-   
+
   This code was written using the C implementation of Python version 3.9.11. Also known as CPython.
 
-* **colorama 0.4.4**
-
-  Because CMD may have some colored text messages for debugging invalid die rolls.
-   
 * **PyQt5 5.15.4**
 
   PyQt5 is the framework used for displaying the Window GUI and buttons, etc.
@@ -112,6 +108,7 @@ Things To-Do
 | Cheat codes.
 |ss|
 
+| Removed requirement for colorama.
 | Put back "some" Traveller 5 stuff that was removed.
 | Add number of worlds for each system (a T5 trait).
 | Add option for Super-Earths (another T5 trait).
@@ -121,12 +118,16 @@ Things To-Do
 
 **Known History**
 
+* v0.5.0b
+
+  Removed requirement for colorama.
+
 * v0.4.0b
 
   Allegiance selection has been added.
-  
+
   Sector Density is now Stellar Density (in accordance with T5). Its range was increased, and uses percentages now.
-  
+
   Small edits made to Sector naming.
 
 * v0.3.1b

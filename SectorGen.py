@@ -4,17 +4,12 @@
 ########################################################
 
 """
-SectorGen 0.4.0 Beta
+SectorGen 0.5.0 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
 Mongoose Traveller 2nd Edition, and a smidgen from Traveller 5.10
 """
-
-from colorama import init
-from colorama import Fore, Back, Style
-
-init() # initialize colorama
 
 #import win32com.client as win32
 import sys
@@ -36,8 +31,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.4.0 (Beta)'
-__version__ = '0.4.0b'
+__app__ = 'SectorGen 0.5.0 (Beta)'
+__version__ = '0.5.0b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -1121,8 +1116,7 @@ if __name__ == '__main__':
         log.warning('Beta time period has expired!')
         
         print()
-        print(Fore.RED + Style.BRIGHT + __app__, 'EXPIRED.')
-        print(Style.RESET_ALL)
+        print(__app__, 'EXPIRED.')
         print()
         print(__author__)
         print()

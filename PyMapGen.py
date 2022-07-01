@@ -5,7 +5,7 @@
 #####################################################################
 
 """
-PyMapGen 0.1.0 Beta
+PyMapGen 0.2.0 Beta
 -------------------
 
 This program displays Traveller 5 sectors and subsectors.
@@ -15,10 +15,6 @@ Copyright 1977 - 2022 Far Future Enterprises.
 Traveller is a registered trademark of Far Future Enterprises.
 """
 
-from colorama import init
-from colorama import Fore, Back, Style
-
-init() # initialize colorama
 import pyttsx3
 import pygame
 from pygame.locals import *
@@ -74,7 +70,7 @@ sector = {'Solomani Rim': (0, -3), 'Old Expanses': (1, -2), 'Fornast': (1, 0),
 XORG_SECTOR, YORG_SECTOR = sector['Core']
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__version__ = '0.1.0b'
+__version__ = '0.2.0b'
 
 #clock = pygame.time.Clock()
 
@@ -456,8 +452,7 @@ if __name__ == '__main__':
     if trange[0] > 2031 or trange[1] > 12:
         log.info(__app__ + ' EXPIRED.')
         print()
-        print(Fore.RED + Style.BRIGHT + __app__, 'EXPIRED.')
-        print(Style.RESET_ALL)
+        print(__app__, 'EXPIRED.')
         print()
         print(__author__)
         print()
@@ -472,7 +467,6 @@ if __name__ == '__main__':
         print(release)
         print('Pygame 2.1.0')
         print('SDL 2.0.16')
-        print(Fore.RED + Style.BRIGHT)
         if vernum != '1.1':
             print('WARNING! Different version of mapper installed:', vernum)
             log.warning('WARNING! Different version of mapper installed: ' + vernum)
@@ -481,9 +475,9 @@ if __name__ == '__main__':
         if pygame.get_sdl_version() != (2, 0, 16):
             print('WARNING! Different version of SDL installed:', pygame.get_sdl_version())
         if not pygame.image.get_extended():
-            print('No extended image file format support for Pygame.' + Style.RESET_ALL)
+            print('No extended image file format support for Pygame.')
         else:
-            print(Style.RESET_ALL + 'Extended image file format supported for Pygame.')
+            print('Extended image file format supported for Pygame.')
         print()
         print('----------------------------')
         print(__author__)

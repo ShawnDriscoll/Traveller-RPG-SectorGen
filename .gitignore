@@ -6,6 +6,10 @@ Data/
 Logs/
 *.log
 
+#############
+## mypy
+#############
+.mypy_cache/
 
 #############
 ## Windows
