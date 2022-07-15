@@ -11,7 +11,7 @@ Mongoose Traveller Second Edition and Traveller 5.10.
 Notes
 -----
 
-**Traveller RPG SectorGen** is being developed using Python 3.9.11 and PyQt5.
+**Traveller RPG SectorGen** is being developed using Python 3.9 and PyQt5.
 There are a few Python programs included.
 
 ``SectorGen.py`` will generate a sector at origin 0,0. The sector density can be selected. It
@@ -31,9 +31,9 @@ Requirements
 
   It might not work in OSX or Linux.
 
-* **Python 3.9.11**
+* **Python 3.9**
 
-  This code was written using the C implementation of Python version 3.9.11. Also known as CPython.
+  This code was written using the C implementation of Python version 3.9. Also known as CPython.
 
 * **PyQt5 5.15.4**
 
@@ -43,9 +43,9 @@ Requirements
 
   PyMapGen speaks in Zira's voice (her voice comes with Windows). Can be changed to a different voice in the source.
 
-* (Optional) **pygame 2.1.0**
+* (Optional) **pygame 2.1.2**
 
-  PyGame is used to draw the maps. It's basically a Python wrapper for SDL 2.0.16, which PyGame includes.
+  PyGame is used to draw the maps. It's basically a Python wrapper for SDL 2.0.18, which PyGame includes.
 
 
 Warning

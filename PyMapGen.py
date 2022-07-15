@@ -5,7 +5,7 @@
 #####################################################################
 
 """
-PyMapGen 0.2.0 Beta
+PyMapGen 0.2.1 Beta
 -------------------
 
 This program displays Traveller 5 sectors and subsectors.
@@ -70,7 +70,7 @@ sector = {'Solomani Rim': (0, -3), 'Old Expanses': (1, -2), 'Fornast': (1, 0),
 XORG_SECTOR, YORG_SECTOR = sector['Core']
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__version__ = '0.2.0b'
+__version__ = '0.2.1b'
 
 #clock = pygame.time.Clock()
 
@@ -465,14 +465,14 @@ if __name__ == '__main__':
         print('This program uses:')
         vernum, release = display_map('info')
         print(release)
-        print('Pygame 2.1.0')
-        print('SDL 2.0.16')
+        print('Pygame 2.1.2')
+        print('SDL 2.0.18')
         if vernum != '1.1':
             print('WARNING! Different version of mapper installed:', vernum)
             log.warning('WARNING! Different version of mapper installed: ' + vernum)
-        if pygame.version.vernum != (2, 1, 0):
+        if pygame.version.vernum != (2, 1, 2):
             print('WARNING! Different version of Pygame installed:', pygame.version.ver)
-        if pygame.get_sdl_version() != (2, 0, 16):
+        if pygame.get_sdl_version() != (2, 0, 18):
             print('WARNING! Different version of SDL installed:', pygame.get_sdl_version())
         if not pygame.image.get_extended():
             print('No extended image file format support for Pygame.')
