@@ -467,7 +467,7 @@ if __name__ == '__main__':
         print(release)
         print('Pygame 2.1.2')
         print('SDL 2.0.18')
-        if vernum != '1.1':
+        if vernum != '1.2':
             print('WARNING! Different version of mapper installed:', vernum)
             log.warning('WARNING! Different version of mapper installed: ' + vernum)
         if pygame.version.vernum != (2, 1, 2):
