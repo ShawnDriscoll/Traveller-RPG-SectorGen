@@ -18,4 +18,4 @@ TRANSPARENT = (255,0,255)
 
 #print('SCREEN_SIZE =', SCREEN_SIZE)
 
-__app__ = 'PyMapGen 0.2.1 (Beta)'
+__app__ = 'PyMapGen 0.2.2 (Beta)'

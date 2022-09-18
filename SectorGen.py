@@ -1,10 +1,10 @@
 #
-#   Python 3.9.11 Sector Generator
+#   Python 3.9.13 Sector Generator
 #
 ########################################################
 
 """
-SectorGen 0.5.0 Beta
+SectorGen 0.5.1 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -23,7 +23,7 @@ import time
 from mainwindow import Ui_MainWindow
 from aboutdialog import Ui_aboutDialog
 from completeddialog import Ui_completedDialog
-from rpg_tools.PyDiceroll import roll
+from rpg_tools.pydice import roll
 import os
 import logging
 import csv
@@ -31,8 +31,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.5.0 (Beta)'
-__version__ = '0.5.0b'
+__app__ = 'SectorGen 0.5.1 (Beta)'
+__version__ = '0.5.1b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):

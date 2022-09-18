@@ -105,6 +105,7 @@ Things To-Do
 | Cheat codes.
 |ss|
 
+| Replace PyDiceroll with newer pydice module.
 | Removed requirement for colorama.
 | Put back "some" Traveller 5 stuff that was removed.
 | Add number of worlds for each system (a T5 trait).
@@ -114,6 +115,10 @@ Things To-Do
 |se|
 
 **Known History**
+
+* v0.5.1b
+
+  Replaced PyDiceroll with newer pydice module.
 
 * v0.5.0b
 

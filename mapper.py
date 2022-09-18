@@ -8,8 +8,8 @@ import sys
 from constants import __app__
 from constants import *
 
-__version__ = '1.1'
-__release__ = '1.1.0b'
+__version__ = '1.2'
+__release__ = '1.2.0b'
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
 
 mapper_log = logging.getLogger('mapper')
@@ -415,9 +415,10 @@ non_agricultural_world = pygame.image.load('images/non_agricultural_30.png').con
 non_industrial_world = pygame.image.load('images/non_industrial_30.png').convert_alpha()
 water_world = pygame.image.load('images/water_100.png').convert_alpha()
 fluid_world = pygame.image.load('images/fluid_100.png').convert_alpha()
-vacuum_world = pygame.image.load('images/vacuum.png').convert_alpha()
-asteroid = pygame.image.load('images/asteroid_0_alternate.png').convert_alpha()
+vacuum_world = pygame.image.load('images/vacuum_0.png').convert_alpha()
+asteroid = pygame.image.load('images/asteroid_0.png').convert_alpha()
 dieback_world = pygame.image.load('images/dieback_0.png').convert_alpha()
+barren_world = pygame.image.load('images/barren_0.png').convert_alpha()
 generic_10 = pygame.image.load('images/generic_10.png').convert_alpha()
 generic_20 = pygame.image.load('images/generic_20.png').convert_alpha()
 generic_30 = pygame.image.load('images/generic_30.png').convert_alpha()
@@ -533,6 +534,24 @@ def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere
         x, y = pos
         w, h = world_image.get_size()
         surface.blit(world_image, (x-w/2, y-h/2))
+    if 'Ag' in world_trade:
+        world_image = agricultural_world
+        world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
+        x, y = pos
+        w, h = world_image.get_size()
+        surface.blit(world_image, (x-w/2, y-h/2))
+    if 'De' in world_trade:
+        world_image = desert_world
+        world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
+        x, y = pos
+        w, h = world_image.get_size()
+        surface.blit(world_image, (x-w/2, y-h/2))
+    if 'Ba' in world_trade:
+        world_image = barren_world
+        world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
+        x, y = pos
+        w, h = world_image.get_size()
+        surface.blit(world_image, (x-w/2, y-h/2))
     if 'Di' in world_trade:
         world_image = dieback_world
         world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
@@ -602,7 +621,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
 
     # was information for this program asked for?
     if xx == 'info':
-        ver = 'mapper, release version ' + __release__ + ' for Python 3.9.10'
+        ver = 'mapper, release version ' + __release__ + ' for Python 3.9.13'
         mapper_log.info('Reporting: mapper release version: %s' % __release__)
         return __version__, ver
 

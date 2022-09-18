@@ -1,11 +1,11 @@
 #
 #
-#   Generate a map from Traveller 5 sector data
+#   Display a map from Traveller 5 sector data
 #
 #####################################################################
 
 """
-PyMapGen 0.2.1 Beta
+PyMapGen 0.2.2 Beta
 -------------------
 
 This program displays Traveller 5 sectors and subsectors.
@@ -70,7 +70,7 @@ sector = {'Solomani Rim': (0, -3), 'Old Expanses': (1, -2), 'Fornast': (1, 0),
 XORG_SECTOR, YORG_SECTOR = sector['Core']
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__version__ = '0.2.1b'
+__version__ = '0.2.2b'
 
 #clock = pygame.time.Clock()
 
