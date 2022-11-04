@@ -9,7 +9,7 @@ from constants import __app__
 from constants import *
 
 __version__ = '1.2'
-__release__ = '1.2.0b'
+__release__ = '1.2.1b'
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
 
 mapper_log = logging.getLogger('mapper')
@@ -419,6 +419,7 @@ vacuum_world = pygame.image.load('images/vacuum_0.png').convert_alpha()
 asteroid = pygame.image.load('images/asteroid_0.png').convert_alpha()
 dieback_world = pygame.image.load('images/dieback_0.png').convert_alpha()
 barren_world = pygame.image.load('images/barren_0.png').convert_alpha()
+zero_water_world = pygame.image.load('images/zero_water.png').convert_alpha()
 generic_10 = pygame.image.load('images/generic_10.png').convert_alpha()
 generic_20 = pygame.image.load('images/generic_20.png').convert_alpha()
 generic_30 = pygame.image.load('images/generic_30.png').convert_alpha()
@@ -438,12 +439,9 @@ world_scale = 4
 
 def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere, world_hydrographics, world_population, world_trade):
     world_image =''
-    if world_atmosphere >= 4 \
-                and world_atmosphere <= 9 \
-                and world_hydrographics >= 4 \
-                and world_hydrographics <= 8 \
-                and world_population >= 5 \
-                and world_population <= 7:
+    if world_atmosphere >= 4 and world_atmosphere <= 9 \
+                and world_hydrographics >= 4 and world_hydrographics <= 8 \
+                and world_population >= 5 and world_population <= 7:
         world_image = agricultural_world
         world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
         x, y = pos
@@ -451,11 +449,8 @@ def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere
         surface.blit(world_image, (x-w/2, y-h/2))
     if world_size >= 6 \
                 and world_size <= 8 \
-                and (world_atmosphere == 5 \
-                or world_atmosphere == 6 \
-                or world_atmosphere == 8) \
-                and world_hydrographics >= 5 \
-                and world_hydrographics <= 7:
+                and (world_atmosphere == 5 or world_atmosphere == 6 or world_atmosphere == 8) \
+                and world_hydrographics >= 5 and world_hydrographics <= 7:
         world_image = garden_world
         world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
         x, y = pos
@@ -487,10 +482,8 @@ def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere
         x, y = pos
         w, h = world_image.get_size()
         surface.blit(world_image, (x-w/2, y-h/2))
-    if world_atmosphere >= 0 \
-                and world_atmosphere <= 3 \
-                and world_hydrographics >= 0 \
-                and world_hydrographics <= 3 \
+    if world_atmosphere >= 0 and world_atmosphere <= 3 \
+                and world_hydrographics >= 0 and world_hydrographics <= 3 \
                 and world_population >= 6:
         world_image = non_agricultural_world
         world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
@@ -503,18 +496,21 @@ def _planet(surface, color, pos, radius, thickness, world_size, world_atmosphere
         x, y = pos
         w, h = world_image.get_size()
         surface.blit(world_image, (x-w/2, y-h/2))
+    if world_hydrographics == 0:
+        world_image = zero_water_world
+        world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
+        x, y = pos
+        w, h = world_image.get_size()
+        surface.blit(world_image, (x-w/2, y-h/2))
     if world_hydrographics == 10 \
-                and world_atmosphere >= 1 \
-                and world_atmosphere <= 9:
+                and world_atmosphere >= 1 and world_atmosphere <= 9:
         world_image = water_world
         world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
         x, y = pos
         w, h = world_image.get_size()
         surface.blit(world_image, (x-w/2, y-h/2))
-    if world_atmosphere >= 10 \
-                and world_atmosphere <= 12 \
-                and world_hydrographics >= 1 \
-                and world_hydrographics <= 10:
+    if world_atmosphere >= 10 and world_atmosphere <= 12 \
+                and world_hydrographics >= 1 and world_hydrographics <= 10:
         world_image = fluid_world
         world_image = pygame.transform.scale(world_image, (8 + world_size*world_scale, 8 + world_size*world_scale))
         x, y = pos

@@ -105,6 +105,7 @@ Things To-Do
 | Cheat codes.
 |ss|
 
+| Zero-Water worlds got a make-over in mapper 1.2.1b.
 | Replace PyDiceroll with newer pydice module.
 | Removed requirement for colorama.
 | Put back "some" Traveller 5 stuff that was removed.
