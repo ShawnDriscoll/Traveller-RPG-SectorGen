@@ -5,13 +5,13 @@
 #####################################################################
 
 """
-PyMapGen 0.2.2 Beta
+PyMapGen 0.2.5 Beta
 -------------------
 
 This program displays Traveller 5 sectors and subsectors.
 
 The Traveller game in all forms is owned by Far Future Enterprises.
-Copyright 1977 - 2022 Far Future Enterprises.
+Copyright 1977 - 2023 Far Future Enterprises.
 Traveller is a registered trademark of Far Future Enterprises.
 """
 
@@ -70,7 +70,7 @@ sector = {'Solomani Rim': (0, -3), 'Old Expanses': (1, -2), 'Fornast': (1, 0),
 XORG_SECTOR, YORG_SECTOR = sector['Core']
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__version__ = '0.2.2b'
+__version__ = '0.2.5b'
 
 #clock = pygame.time.Clock()
 
@@ -465,14 +465,14 @@ if __name__ == '__main__':
         print('This program uses:')
         vernum, release = display_map('info')
         print(release)
-        print('Pygame 2.1.2')
-        print('SDL 2.0.18')
+        print('Pygame 2.1.3')
+        print('SDL 2.0.22')
         if vernum != '1.2':
             print('WARNING! Different version of mapper installed:', vernum)
             log.warning('WARNING! Different version of mapper installed: ' + vernum)
-        if pygame.version.vernum != (2, 1, 2):
+        if pygame.version.vernum != (2, 1, 3):
             print('WARNING! Different version of Pygame installed:', pygame.version.ver)
-        if pygame.get_sdl_version() != (2, 0, 18):
+        if pygame.get_sdl_version() != (2, 0, 22):
             print('WARNING! Different version of SDL installed:', pygame.get_sdl_version())
         if not pygame.image.get_extended():
             print('No extended image file format support for Pygame.')
@@ -483,7 +483,7 @@ if __name__ == '__main__':
         print(__author__)
         print()
         print('The Traveller game in all forms is owned by Far Future Enterprises.')
-        print('Copyright 1977 - 2022 Far Future Enterprises.')
+        print('Copyright 1977 - 2023 Far Future Enterprises.')
         print('Traveller is a registered trademark of Far Future Enterprises.')
         print()
         

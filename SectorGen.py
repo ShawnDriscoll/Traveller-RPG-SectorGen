@@ -1,10 +1,10 @@
 #
-#   Python 3.9.13 Sector Generator
+#   Python 3.11.0 Sector Generator
 #
 ########################################################
 
 """
-SectorGen 0.5.1 Beta
+SectorGen 0.5.5 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -31,8 +31,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.5.1 (Beta)'
-__version__ = '0.5.1b'
+__app__ = 'SectorGen 0.5.5 (Beta)'
+__version__ = '0.5.5b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -155,6 +155,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         self.gas_giant_quantity =      [' ', ' ', '1', '1', '2', '2', '3', '3', '4', '4', '4', '5', '5']
         self.planetoid_belt_quantity = [' ', ' ', '1', '1', '1', '1', '1', '1', '2', '2', '2', '2', '3']
+        self.population_multipliers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         self.sn = [0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3]
         self.primary_star_type =   [' ', ' ', 'A', 'M', 'M', 'M', 'M', 'M', 'K', 'G', 'F', 'F', 'F']
@@ -832,6 +833,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                             self.population_multiplier = roll('1D6+4')
                     if self.population_multiplier < 1:
                         self.population_multiplier = 1
+                    self.population_multiplier = self.population_multipliers[self.population_multiplier]
                 
                 #   Planetoid Belts?
                 
@@ -1025,7 +1027,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     detail_line += self.main_world_travel_code[len(self.main_world_travel_code) - 1:len(self.main_world_travel_code)]
                     while len(detail_line) < 85:
                         detail_line += ' '
-                    detail_line += ' ' + str(self.population_multiplier) + str(self.planetoid_belts) + str(self.gas_giants)
+                    detail_line += ' ' + self.population_multiplier + self.planetoid_belts + self.gas_giants
                     while len(detail_line) < 90:
                         detail_line += ' '
                     detail_line += self.worlds
@@ -1111,7 +1113,7 @@ if __name__ == '__main__':
     
     trange = time.localtime()
     creation_time = datetime.datetime.now()
-    if trange[0] > 2022 or trange[1] > 11:
+    if trange[0] > 2022 or trange[1] > 12:
         
         log.warning('Beta time period has expired!')
         
@@ -1130,7 +1132,7 @@ if __name__ == '__main__':
     else:
         print()
         print('Thank you for giving', __app__, 'a try.')
-        log.info(__app__ + ' looking for PyDiceroll...')
+        log.info(__app__ + ' looking for pydice...')
         vernum, release = roll('info')
         print('This program uses', release)
         log.info(__app__ + ' found ' + release + '.')
@@ -1139,7 +1141,7 @@ if __name__ == '__main__':
         print(__author__)
         print()
         print('The Traveller game in all forms is owned by Far Future Enterprises.')
-        print('Copyright 1977 - 2022 Far Future Enterprises.')
+        print('Copyright 1977 - 2023 Far Future Enterprises.')
         print('Traveller is a registered trademark of Far Future Enterprises.')
         print()
         

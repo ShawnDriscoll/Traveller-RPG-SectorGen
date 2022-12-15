@@ -11,7 +11,7 @@ Mongoose Traveller Second Edition and Traveller 5.10.
 Notes
 -----
 
-**Traveller RPG SectorGen** is being developed using Python 3.9 and PyQt5.
+**Traveller RPG SectorGen** is being developed using Python 3.11 and PyQt5.
 There are a few Python programs included.
 
 ``SectorGen.py`` will generate a sector at origin 0,0. The sector density can be selected. It
@@ -29,13 +29,13 @@ Requirements
 
 * **Windows 10**
 
-  It might not work in OSX or Linux.
+  Has not bee tested with Windows 11.
 
-* **Python 3.9**
+* **Python 3.11**
 
-  This code was written using the C implementation of Python version 3.9. Also known as CPython.
+  This code was written using the C implementation of Python version 3.11. Also known as CPython.
 
-* **PyQt5 5.15.4**
+* **PyQt5 5.15.7**
 
   PyQt5 is the framework used for displaying the Window GUI and buttons, etc.
 
@@ -43,15 +43,10 @@ Requirements
 
   PyMapGen speaks in Zira's voice (her voice comes with Windows). Can be changed to a different voice in the source.
 
-* (Optional) **pygame 2.1.2**
+* (Optional) **pygame 2.1.3.dev8**
 
-  PyGame is used to draw the maps. It's basically a Python wrapper for SDL 2.0.18, which PyGame includes.
+  PyGame is used to draw the maps. It's basically a Python wrapper for SDL 2.0.22, which PyGame includes.
 
-
-Warning
--------
-
-This code will not work with **Python 2.7-**.
 
 
 PyMapGen Usage
@@ -117,6 +112,10 @@ Things To-Do
 
 **Known History**
 
+* v0.5.5b
+
+  Updated to Python 3.11.0.
+
 * v0.5.1b
 
   Replaced PyDiceroll with newer pydice module.
@@ -168,7 +167,7 @@ Things To-Do
   Initial release.
 
 
-The Traveller game in all forms is owned by Far Future Enterprises. Copyright 1977 - 2022 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.
+The Traveller game in all forms is owned by Far Future Enterprises. Copyright 1977 - 2023 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.
 
 
 Contact
