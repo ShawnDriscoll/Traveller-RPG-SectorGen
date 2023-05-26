@@ -112,6 +112,10 @@ Things To-Do
 
 **Known History**
 
+* v0.5.6b
+
+  Trade codes can be Unknown now.
+
 * v0.5.5b
 
   Updated to Python 3.11.0.

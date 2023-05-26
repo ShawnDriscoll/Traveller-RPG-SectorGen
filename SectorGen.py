@@ -4,7 +4,7 @@
 ########################################################
 
 """
-SectorGen 0.5.5 Beta
+SectorGen 0.5.6 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -31,8 +31,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.5.5 (Beta)'
-__version__ = '0.5.5b'
+__app__ = 'SectorGen 0.5.6 (Beta)'
+__version__ = '0.5.6b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -945,9 +945,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         
                     self.main_world_trade_codes = ''
                     self.main_world_trade_classes = ''
-                    for i in range(self.trade_index):
-                        self.main_world_trade_codes += ' ' + self.main_world_trade_code[i]
-                        self.main_world_trade_classes += self.main_world_trade_class[i] + ', '
+                    #self.trade_index = 0
+                    if self.trade_index > 0:
+                        for i in range(self.trade_index):
+                            self.main_world_trade_codes += ' ' + self.main_world_trade_code[i]
+                            self.main_world_trade_classes += self.main_world_trade_class[i] + ', '
+                    else:
+                        self.main_world_trade_codes = ' Unknown Codes'
+                        self.main_world_trade_classes = 'Unknown Codes, '
                     
                 # Print Main World
 
@@ -1113,7 +1118,7 @@ if __name__ == '__main__':
     
     trange = time.localtime()
     creation_time = datetime.datetime.now()
-    if trange[0] > 2023 or trange[1] > 4:
+    if trange[0] > 2023 or trange[1] > 7:
         
         log.warning('Beta time period has expired!')
         
