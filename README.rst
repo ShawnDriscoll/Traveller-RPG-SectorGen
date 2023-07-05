@@ -35,7 +35,7 @@ Requirements
 
   This code was written using the C implementation of Python version 3.11. Also known as CPython.
 
-* **PyQt5 5.15.7**
+* **PyQt5 5.15.9**
 
   PyQt5 is the framework used for displaying the Window GUI and buttons, etc.
 
@@ -43,9 +43,9 @@ Requirements
 
   PyMapGen speaks in Zira's voice (her voice comes with Windows). Can be changed to a different voice in the source.
 
-* (Optional) **pygame 2.1.3.dev8**
+* (Optional) **pygame 2.4.0**
 
-  PyGame is used to draw the maps. It's basically a Python wrapper for SDL 2.0.22, which PyGame includes.
+  PyGame is used to draw the maps. It's basically a Python wrapper for SDL 2.26.4, which PyGame includes.
 
 
 

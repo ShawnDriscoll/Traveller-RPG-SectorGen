@@ -19,11 +19,14 @@ import pyttsx3
 import pygame
 from pygame.locals import *
 import time
+import sys
 from mapper import display_map
 import os
 import logging
 from constants import *
 from constants import __app__
+from constants import __version__
+from constants import __py_version_req__
 
 engine = pyttsx3.init()
 
@@ -70,7 +73,6 @@ sector = {'Solomani Rim': (0, -3), 'Old Expanses': (1, -2), 'Fornast': (1, 0),
 XORG_SECTOR, YORG_SECTOR = sector['Core']
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__version__ = '0.2.5b'
 
 #clock = pygame.time.Clock()
 
@@ -465,14 +467,20 @@ if __name__ == '__main__':
         print('This program uses:')
         vernum, release = display_map('info')
         print(release)
-        print('Pygame 2.1.3')
-        print('SDL 2.0.22')
+        print('Pygame 2.4.0')
+        print('SDL 2.26.4')
+        if sys.version_info[0:3] < __py_version_req__:
+            print('WARNING:', sys.version_info[0:3], 'is an older version of Python installed.')
+            log.warning('WARNING: ' + str(sys.version_info[0:3]) + ' is an older version of Python installed.')
+        elif sys.version_info[0:3] > __py_version_req__:
+            print('WARNING:', sys.version_info[0:3], 'is a newer version of Python installed.')
+            log.warning('WARNING: ' + str(sys.version_info[0:3]) + ' is a newer version of Python installed.')
         if vernum != '1.2':
             print('WARNING! Different version of mapper installed:', vernum)
             log.warning('WARNING! Different version of mapper installed: ' + vernum)
-        if pygame.version.vernum != (2, 1, 3):
+        if pygame.version.vernum != (2, 4, 0):
             print('WARNING! Different version of Pygame installed:', pygame.version.ver)
-        if pygame.get_sdl_version() != (2, 0, 22):
+        if pygame.get_sdl_version() != (2, 26, 4):
             print('WARNING! Different version of SDL installed:', pygame.get_sdl_version())
         if not pygame.image.get_extended():
             print('No extended image file format support for Pygame.')
