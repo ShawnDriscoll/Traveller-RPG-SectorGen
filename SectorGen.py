@@ -1118,7 +1118,7 @@ if __name__ == '__main__':
     
     trange = time.localtime()
     creation_time = datetime.datetime.now()
-    if trange[0] > 2023 or trange[1] > 7:
+    if trange[0] > 2023 or trange[1] > 9:
         
         log.warning('Beta time period has expired!')
         
