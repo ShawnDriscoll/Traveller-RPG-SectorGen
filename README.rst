@@ -93,6 +93,7 @@ You can always run the .EXE versions for Windows 10 if you don't have the Python
 Things To-Do
 ------------
 
+| Printing PDFs from the PyMapGen screen.
 | Add more world types.
 | Add trade routes.
 | Instruction manual.
@@ -100,6 +101,7 @@ Things To-Do
 | Cheat codes.
 |ss|
 
+| Update requirements for Python 3.11.0 use.
 | Zero-Water worlds got a make-over in mapper 1.2.1b.
 | Replace PyDiceroll with newer pydice module.
 | Removed requirement for colorama.
