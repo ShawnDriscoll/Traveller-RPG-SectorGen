@@ -5,7 +5,7 @@
 #####################################################################
 
 """
-PyMapGen 0.2.5 Beta
+PyMapGen 0.2.6 Beta
 -------------------
 
 This program displays Traveller 5 sectors and subsectors.
@@ -29,24 +29,26 @@ from constants import __version__
 from constants import __py_version_req__
 
 engine = pyttsx3.init()
+voice_list = engine.getProperty('voices')
+voices = []
+voice = {}
+rate = -50
+volume = 1.0
 
-reg_voice_path = 'HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\'
+for i in voice_list:
+    rec = {}
+    name_found = i.name[i.name.find(' ')+1:]
+    name_found = name_found[:name_found.find(' ')]
+    voices.append(name_found)
+    rec['Name'] = i.id
+    rec['Rate'] = rate
+    rec['Volume'] = volume
+    voice[name_found] = rec
 
-voice = {'US Zira':     {'Name': 'TTS_MS_EN-US_ZIRA_11.0',
-                         'Rate': -50,
-                         'Volume': -0.0},
-         'US David':    {'Name': 'TTS_MS_EN-US_DAVID_11.0',
-                         'Rate': -60,
-                         'Volume': -0.0}
-        }
-
-speaker = 'US Zira'  # Your system's default voice will be used if speaker value is not found in registry.
+num_voices = len(voice)
 
 rate = engine.getProperty('rate')
-engine.setProperty('rate', rate + voice[speaker]['Rate'])
 volume = engine.getProperty('volume')
-engine.setProperty('volume', volume + voice[speaker]['Volume'])
-engine.setProperty('voice', reg_voice_path + voice[speaker]['Name'])
 
 sector = {'Solomani Rim': (0, -3), 'Old Expanses': (1, -2), 'Fornast': (1, 0),
           'Delphi': (1, -1), 'Drakken': (3, -4), 'Langere': (2, -4),
@@ -318,13 +320,19 @@ def main(voice_muted, grid_style, zone_style, trade_code, see_thru, show_loc, sh
                     else:
                         yy += -1
                         event_scanning = False
-                elif event.key == pygame.K_m:
+                elif event.key == pygame.K_0:
                     if not voice_muted:
                         text = 'muting'
                         voice_muted = True
-                    else:
-                        text = 'vocalizations enabled'
-                        voice_muted = False
+                        engine.say(text)
+                        engine.runAndWait()
+                elif event.key >= 49 and event.key <= num_voices + 48:
+                    speaker = voices[event.key - 49]
+                    voice_muted = False
+                    engine.setProperty('rate', rate + voice[speaker]['Rate'])
+                    engine.setProperty('volume', volume + voice[speaker]['Volume'])
+                    engine.setProperty('voice', voice[speaker]['Name'])
+                    text = 'vocalizations for ' + speaker + ' enabled'
                     engine.say(text)
                     engine.runAndWait()
                 elif event.key == pygame.K_h:
@@ -494,5 +502,10 @@ if __name__ == '__main__':
         print('Copyright 1977 - 2023 Far Future Enterprises.')
         print('Traveller is a registered trademark of Far Future Enterprises.')
         print()
-        
+        print('Voice List')
+        print('0 Mute Voice')
+        for i in range(num_voices):
+            print(i+1, voices[i])
+        print()
+
         main(voice_muted, grid_style, zone_style, trade_code, see_thru, show_loc, show_grid)

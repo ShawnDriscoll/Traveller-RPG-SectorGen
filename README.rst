@@ -58,7 +58,9 @@ Dragging a sector (or pressing the arrow keys) will scroll the map.
 
 The ``mouse wheel`` will zoom the map in and out while pointing.
 
-Pressing ``m`` will toggle the computer's voice on/off.
+Pressing ``0`` will mute the computer's voice.
+
+Pressing ``1 - 9`` will choose the computer's voice shown in the list.
 
 Pressing ``h`` will flip to a hex map(s) at different zoom levels.
 
