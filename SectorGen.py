@@ -304,49 +304,49 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.word += self.sound
                     temp = syllable
 
-            if len(self.word) > 3 and len(self.word) < 14:
+            if len(self.word) > 4 and len(self.word) < 14:
                 proper = True
 
         self.sector_name = chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
 
-        proper = False
-        while not(proper):
-            temp = self.CC
-            while temp == self.CC:
-                temp = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
-            self.s_type = temp
-            self.pick_sound()
-            self.word = self.sound
-            building = True
-            while building:
-                syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
-                while temp == self.CC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
-                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
-                while temp == self.V and (syllable == self.V or syllable == self.VC):
-                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
-                while temp == self.CV and (syllable == self.V or syllable == self.VC):
-                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
-                while temp == self.VC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
-                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
-                while temp == self.CVC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
-                    syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
-                if temp == self.VC or temp == self.CVC:
-                    building = False
-                else:
-                    self.s_type = syllable
-                    self.pick_sound()
-                    self.word += self.sound
-                    temp = syllable
-
-            if len(self.word) > 3 and len(self.word) < 14:
-                proper = True
-
         name_variance = roll('d100')
-        
+
         #print(name_variance)
 
         if name_variance <= 60:
             if name_variance >= 45:
+                proper = False
+                while not(proper):
+                    temp = self.CC
+                    while temp == self.CC:
+                        temp = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                    self.s_type = temp
+                    self.pick_sound()
+                    self.word = self.sound
+                    building = True
+                    while building:
+                        syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                        while temp == self.CC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
+                            syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                        while temp == self.V and (syllable == self.V or syllable == self.VC):
+                            syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                        while temp == self.CV and (syllable == self.V or syllable == self.VC):
+                            syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                        while temp == self.VC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
+                            syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                        while temp == self.CVC and (syllable == self.CV or syllable == self.CVC or syllable == self.CC):
+                            syllable = self.syllable_type[randint(1, len(self.syllable_type)) - 1]
+                        if temp == self.VC or temp == self.CVC:
+                            building = False
+                        else:
+                            self.s_type = syllable
+                            self.pick_sound()
+                            self.word += self.sound
+                            temp = syllable
+
+                    if len(self.word) > 4 and len(self.word) < 14:
+                        proper = True
+
                 self.sector_name += ' ' + chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
             elif name_variance >= 35:
                 self.sector_name += ' ' + 'Alpha'
@@ -408,7 +408,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.word += self.sound
                         temp = syllable
 
-                if len(self.word) > 3 and len(self.word) < 14:
+                if len(self.word) > 4 and len(self.word) < 14:
                     proper = True
 
             mapper_file_out.write('\n# Subsector ' + self.core_code[subs] + ': ' + chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)])
@@ -466,7 +466,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                 self.word += self.sound
                                 temp = syllable
 
-                        if len(self.word) > 3 and len(self.word) < 14:
+                        if len(self.word) > 4 and len(self.word) < 14:
                             proper = True
 
                     self.main_world_name = chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
