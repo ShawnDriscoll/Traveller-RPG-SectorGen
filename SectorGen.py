@@ -304,7 +304,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     self.word += self.sound
                     temp = syllable
 
-            if len(self.word) > 4 and len(self.word) < 14:
+            if len(self.word) > 4 and len(self.word) < 11:
                 proper = True
 
         self.sector_name = chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
@@ -344,7 +344,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                             self.word += self.sound
                             temp = syllable
 
-                    if len(self.word) > 4 and len(self.word) < 14:
+                    if len(self.word) > 4 and len(self.word) < 11:
                         proper = True
 
                 self.sector_name += ' ' + chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
@@ -408,7 +408,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.word += self.sound
                         temp = syllable
 
-                if len(self.word) > 4 and len(self.word) < 14:
+                if len(self.word) > 4 and len(self.word) < 11:
                     proper = True
 
             mapper_file_out.write('\n# Subsector ' + self.core_code[subs] + ': ' + chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)])
@@ -466,7 +466,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                 self.word += self.sound
                                 temp = syllable
 
-                        if len(self.word) > 4 and len(self.word) < 14:
+                        if len(self.word) > 4 and len(self.word) < 11:
                             proper = True
 
                     self.main_world_name = chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
