@@ -11,7 +11,7 @@ Mongoose Traveller Second Edition and Traveller 5.10.
 Notes
 -----
 
-**Traveller RPG SectorGen** is being developed using Python 3.11 and PyQt5.
+**Traveller RPG SectorGen** is being developed using Python 3.11.6 and PyQt5.
 There are a few Python programs included.
 
 ``SectorGen.py`` will generate a sector at origin 0,0. The sector density can be selected. It
@@ -27,11 +27,11 @@ will create both raw CSV and JSON data files, and a Traveller 5 format sector fi
 Requirements
 ------------
 
-* **Windows 10**
+* **Windows 11**
 
-  Has not bee tested with Windows 11.
+  Has been tested with Windows 10.
 
-* **Python 3.11**
+* **Python 3.11.6**
 
   This code was written using the C implementation of Python version 3.11. Also known as CPython.
 
@@ -115,6 +115,10 @@ Things To-Do
 |se|
 
 **Known History**
+
+* v0.5.7b
+
+  World name suffix has been added for duplicates.
 
 * v0.5.6b
 

@@ -1,5 +1,5 @@
 
-This program has been tested on Windows 10.
+This program has been tested on Windows 10 and 11.
 
 First, install the included ERASDEMI, OPTIMA, and T5-9000-Symbols fonts.
 

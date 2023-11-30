@@ -1,10 +1,10 @@
 #
-#   Python 3.11.0 Sector Generator
+#   Python 3.11.6 Sector Generator
 #
 ########################################################
 
 """
-SectorGen 0.5.6 Beta
+SectorGen 0.5.7 Beta
 -----------------------------------------------------------------------
 
 This program generates sectors using rules from
@@ -31,8 +31,8 @@ import json
 import datetime
 
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
-__app__ = 'SectorGen 0.5.6 (Beta)'
-__version__ = '0.5.6b'
+__app__ = 'SectorGen 0.5.7 (Beta)'
+__version__ = '0.5.7b'
 
 
 class aboutDialog(QDialog, Ui_aboutDialog):
@@ -161,6 +161,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.primary_star_type =   [' ', ' ', 'A', 'M', 'M', 'M', 'M', 'M', 'K', 'G', 'F', 'F', 'F']
         self.companion_star_type = [' ', ' ', 'A', 'F', 'F', 'G', 'G', 'K', 'K', 'M', 'M', 'M', 'M']
         self.star_size = ['   ', '   ', 'II ', 'III', 'IV ', 'V  ', 'V  ', 'V  ', 'V  ', 'V  ', 'V  ', 'VI ', 'D  ']
+        self.world_name_list = []
+        self.world_name_suffix = ['II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X']
 
     #   Sound Tables
 
@@ -171,34 +173,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.CC  = 5
         
         self.ic_sound = ['b','br','c','ch','d','g',
-                         'h','j','k','l','m','p',
+                         'h','j','k','l','m','n','p',
                          'r','s','st','sh',
                          't','v','w','z']
-        self.ic_freq = [28,12,20,16,27,9,20,20,13,
-                        28,24,27,24,30,13,25,
+        self.ic_freq = [28,12,20,16,27,9,20,20,17,
+                        28,24,10,27,24,30,13,25,
                         20,6,16,4]
         
         self.v_sound = ['a','e','i','o','u']
         self.v_freq = [16,20,10,7,3]
     
         self.mc_sound = ['g','lt','ns','nst','ls','ll','nn']
-        self.mc_freq = [20,3,18,16,18,4,3]
+        self.mc_freq = [5,3,18,16,18,4,3]
     
-        self.fc_sound = ['ch','ck','d','dy','dyne',
-                         'hl','li','la','le','ler',
+        self.fc_sound = ['i','s','r','ch','ck','d','dy',
+                         'li','la','ler',
                          'nn','m','man','ma','mer','ny',
-                         'me','n','nas','ne','ng',
+                         'me','n','ne','ng',
                          'ner','nor','nie',
                          'rie','rlie','rly','rie','rt',
                          'ry','sa','sha','nshi','nski','son',
                          'nson','th','ta','ti','t','v',
                          'za','ue','than',
                          'lam','lis','lus','ton','tis','tus',
-                         'love','se','nter','ll']
-        self.fc_freq = [6,13,22,12,3,3,3,10,6,10,7,
-                        25,10,4,13,12,5,27,11,4,14,13,17,7,6,5,5,6,3,
+                         'se','nter','ll','mison','som','er','or','rry']
+        self.fc_freq = [9,7,7,6,13,22,2,3,10,10,7,
+                        25,10,4,13,12,5,27,4,14,3,3,5,6,2,2,3,3,
                         21,10,3,8,3,20,9,14,10,16,11,8,6,8,10,7,6,5,7,7,4,
-                        4,12,5,4]
+                        12,5,4,3,3,7,4,6]
         
         for i in range(len(self.ic_sound)):
             log.debug(self.ic_sound[i] + ' ' + str(self.ic_freq[i]))
@@ -468,6 +470,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                             proper = True
 
                     self.main_world_name = chr(ord(self.word[0]) - 32) + self.word[1:len(self.word)]
+
+                    temp_name = self.main_world_name
+                    name_count = 0
+                    if len(self.world_name_list) > 0:
+                        for n in range(len(self.world_name_list)):
+                            if self.main_world_name == self.world_name_list[n]:
+                                temp_name = self.main_world_name
+                                name_count += 1
+                        if name_count > 0:
+                            self.main_world_name = temp_name + ' ' + self.world_name_suffix[name_count - 1]
+                    else:
+                        temp_name = self.main_world_name
+                    self.world_name_list.append(temp_name)
             
                 #   Find Location and Subsector for Main World
                     

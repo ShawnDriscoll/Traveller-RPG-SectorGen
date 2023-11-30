@@ -20,4 +20,4 @@ TRANSPARENT = (255,0,255)
 
 __app__ = 'PyMapGen 0.2.6 (Beta)'
 __version__ = '0.2.6b'
-__py_version_req__ = (3,11,4)
+__py_version_req__ = (3,11,6)
