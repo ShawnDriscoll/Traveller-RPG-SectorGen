@@ -82,7 +82,7 @@ Pressing ``ESC`` will exit the program.
 Not Using Python?
 -----------------
 
-You can always run the .EXE versions for Windows 10 if you don't have the Python language installed.
+You can always run the .EXE versions for Windows 11 if you don't have the Python language installed.
 
 .. |ss| raw:: html
 
