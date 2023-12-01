@@ -1,7 +1,6 @@
 
 import pygame
 from math import cos, sin
-
 import os
 import logging
 import sys
@@ -57,17 +56,18 @@ dark_red = (139,0,0)
 light_brown = (181, 101, 29)
 tan = (210,180,140)
 light_gray = (200, 200, 200)
-silver = (192,192,192)
-rust = (183,65,14)
-yellow_green = (154,205,50)
-peach = (255,229,180)
-pear = (209,226,49)
-dark_grey = (40,40,40)
-wood = (193,154,107)
-maroon = (123,17,19)
-dark_purple = (48,25,52)
+silver = (192, 192, 192)
+rust = (183, 65, 14)
+yellow_green = (154, 205, 50)
+peach = (255, 229, 180)
+pear = (209, 226, 49)
+dark_grey = (40, 40, 40)
+wood = (193, 154, 107)
+maroon = (123, 17, 19)
+dark_purple = (48, 25, 52)
 white_pink = (171, 39, 79)
-deep_purple = (255,0,224)
+deep_purple = (255, 0, 224)
+light_pink = (246, 148, 206)
 
 allegiance_color = {'4Wor': purple,
                     '6w': blue,
@@ -94,6 +94,7 @@ allegiance_color = {'4Wor': purple,
                     'AsTv': yellow,
                     'AsVc': yellow,
                     'AsWc': yellow,
+                    'AsXX': yellow,
                     'AU': yellow,
                     'AU  ': yellow,
                     'Bium': yellow,
@@ -106,6 +107,7 @@ allegiance_color = {'4Wor': purple,
                     'Ca  ': yellow,
                     'Cl': yellow_green,
                     'Cl  ': yellow_green,
+                    'CoLg': tan,
                     'Cr': orange,
                     'Cr  ': orange,
                     'Cs': cyan,
@@ -121,6 +123,7 @@ allegiance_color = {'4Wor': purple,
                     'DoAl': purple,
                     'Ed': purple,
                     'Ed  ': purple,
+                    'EsMa': gray,
                     'FCSA': cyan,
                     'FeAl': gray,
                     'FeHe': orange,
@@ -153,6 +156,7 @@ allegiance_color = {'4Wor': purple,
                     'HaCo': red,
                     'Hc': gold,
                     'Hc  ': gold,
+                    'HeCo': light_gray,
                     'HoPA': green,
                     'Hp': green,
                     'Hp  ': green,
@@ -167,7 +171,7 @@ allegiance_color = {'4Wor': purple,
                     'Hy  ': green,
                     'Ia': pink,
                     'Ia  ': pink,
-                    'IHPr': cyan,
+                    'IHPr': pink,
                     'Im': red,
                     'Im  ': red,
                     'ImAp': blue,
@@ -197,6 +201,7 @@ allegiance_color = {'4Wor': purple,
                     'K3  ': yellow_green,
                     'K4': green,
                     'K4  ': green,
+                    'KaEm': red,
                     'Kc': light_green,
                     'Kc  ': light_green,
                     'KhLe': yellow,
@@ -223,12 +228,14 @@ allegiance_color = {'4Wor': purple,
                     'Mi': pink,
                     'Mi  ': pink,
                     'MiCo': red,
+                    'MoLo': gold,
                     'MnPr': gray,
                     'Mp': yellow_green,
                     'Mp  ': yellow_green,
                     'Na': white,
                     'Na  ': white,
                     'NaHu': white,
+                    'NkCo': light_blue,
                     'Og': light_green,
                     'Og  ': light_green,
                     'Pd': purple,
@@ -236,6 +243,7 @@ allegiance_color = {'4Wor': purple,
                     #'NaXX': purple,
                     'PiFe': blue,
                     'PlLe': pink,
+                    'PrBr': purple,
                     'Prot': yellow,
                     'Rc': pink,
                     'Rc  ': pink,
@@ -248,6 +256,7 @@ allegiance_color = {'4Wor': purple,
                     'SC': cyan,
                     'SC  ': cyan,
                     'SeFo': yellow_green,
+                    'ShRp': cyan,
                     'SlLg': gold,
                     'So': orange,
                     'So  ': orange,
@@ -368,7 +377,7 @@ allegiance_color = {'4Wor': purple,
                     'ZhJp': blue,
                     'ZhMe': blue,
                     'ZhSh': blue,
-                    'ZyCo': pink
+                    'ZyCo': light_pink
                     }
 
 hex_code = {'0': 0,

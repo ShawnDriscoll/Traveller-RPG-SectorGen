@@ -1,6 +1,6 @@
 #
 #
-#   Display a map from Traveller 5 sector data
+#   Display a map from Traveller 5.10 sector data
 #
 #####################################################################
 
