@@ -14,7 +14,7 @@ Notes
 **Traveller RPG SectorGen** is being developed using Python 3.11.6 and PyQt5.
 There are a few Python programs included.
 
-``SectorGen.py`` will generate a sector at origin 0,0 or at a coordinate chosen. The sector density can be selected. It
+``SectorGen.py`` will generate a sector at a coordinate chosen. The sector density can be selected. It
 will create temporary raw CSV and JSON data files of the last sector generated. Traveller 5 format sector files are generated for each coordinate chosen.
 
 (Optional) ``CSV_to_GEnie_converter.py`` will create a GEnie format file from the raw sector data generated.
