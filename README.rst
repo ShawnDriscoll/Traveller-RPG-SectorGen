@@ -116,6 +116,10 @@ Things To-Do
 
 **Known History**
 
+* v0.6.0b
+
+  Sector coordinates (for trailing and rimward) can now be entered before sector generation.
+
 * v0.5.7b
 
   World name suffix has been added for duplicates.
