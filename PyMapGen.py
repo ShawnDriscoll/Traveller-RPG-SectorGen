@@ -5,13 +5,13 @@
 #####################################################################
 
 """
-PyMapGen 0.2.6 Beta
+PyMapGen 0.2.7 Beta
 -------------------
 
 This program displays Traveller 5 sectors and subsectors.
 
 The Traveller game in all forms is owned by Far Future Enterprises.
-Copyright 1977 - 2023 Far Future Enterprises.
+Copyright 1977 - 2024 Far Future Enterprises.
 Traveller is a registered trademark of Far Future Enterprises.
 """
 
@@ -483,7 +483,7 @@ if __name__ == '__main__':
         elif sys.version_info[0:3] > __py_version_req__:
             print('WARNING:', sys.version_info[0:3], 'is a newer version of Python installed.')
             log.warning('WARNING: ' + str(sys.version_info[0:3]) + ' is a newer version of Python installed.')
-        if vernum != '1.2':
+        if vernum != '2.0':
             print('WARNING! Different version of mapper installed:', vernum)
             log.warning('WARNING! Different version of mapper installed: ' + vernum)
         if pygame.version.vernum != (2, 4, 0):
@@ -499,7 +499,7 @@ if __name__ == '__main__':
         print(__author__)
         print()
         print('The Traveller game in all forms is owned by Far Future Enterprises.')
-        print('Copyright 1977 - 2023 Far Future Enterprises.')
+        print('Copyright 1977 - 2024 Far Future Enterprises.')
         print('Traveller is a registered trademark of Far Future Enterprises.')
         print()
         print('Voice List')

@@ -18,6 +18,6 @@ TRANSPARENT = (255,0,255)
 
 #print('SCREEN_SIZE =', SCREEN_SIZE)
 
-__app__ = 'PyMapGen 0.2.6 (Beta)'
-__version__ = '0.2.6b'
+__app__ = 'PyMapGen 0.2.7 (Beta)'
+__version__ = '0.2.7b'
 __py_version_req__ = (3,11,6)

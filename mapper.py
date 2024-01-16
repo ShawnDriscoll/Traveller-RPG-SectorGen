@@ -8,8 +8,8 @@ from constants import __app__
 from constants import __py_version_req__
 from constants import *
 
-__version__ = '1.2'
-__release__ = '1.2.5b'
+__version__ = '2.0'
+__release__ = '2.0.0b'
 __author__ = 'Shawn Driscoll <shawndriscoll@hotmail.com>\nshawndriscoll.blogspot.com'
 
 mapper_log = logging.getLogger('mapper')
@@ -28,22 +28,23 @@ mapper_log.addHandler(fh)
 mapper_log.info('Logging started.')
 mapper_log.info('mapper v' + __version__ + ' started, and running...')
 
-white = (255,255,255)
-black = (0,0,0)
-gray = (60,60,60)
+white = (255, 255, 255)
+black = (0, 0, 0)
+gray = (60, 60, 60)
+medium_gray = (120, 120, 120)
 green = (0, 255, 0)
 red = (255, 0, 0)
 yellow  = (255, 255, 0)
-orange = (255,165,0)
-amber = (255,191,0)
+orange = (255, 165 ,0)
+amber = (255, 191, 0)
 blue = (0, 0, 255)
 darker_blue = (0, 0, 150)
 purple = (255, 0, 255)
 cyan = (0,255,255)
 light_green = (144, 238, 144)
-pink = (255,105,180)
+pink = (255, 105, 180)
 dark_green = (100, 190, 100)
-light_blue = (135,206,250)
+light_blue = (135, 206, 250)
 gold = (255, 215, 0)
 maya_blue = (79, 214, 255)
 bright_green = (102, 255, 0)
@@ -52,9 +53,9 @@ light_purple = (177, 156, 217)
 light_red = (255, 102, 102)
 lightish_blue = (153, 153, 255)
 canary_yellow = (255, 239, 0)
-dark_red = (139,0,0)
+dark_red = (139, 0, 0)
 light_brown = (181, 101, 29)
-tan = (210,180,140)
+tan = (210, 180, 140)
 light_gray = (200, 200, 200)
 silver = (192, 192, 192)
 rust = (183, 65, 14)
@@ -909,8 +910,10 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                             y_line_spacing += 40*zoom
                 sect_point += 1
     else:
-        #print 'subxx=%d, subyy=%d, zoom-8, style=%s' % (subxx,subyy,grid_style)
+        #print('subxx=%d, subyy=%d, zoom-8, style=%s' % (subxx,subyy,grid_style))
         
+        subsector_list = []
+        # Display zoom-8. Two subectors.
         for x in range(2):
             
             sec_filename = 'sec'
@@ -936,10 +939,23 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
             try:
                 read_line = 0
                 with open('data/' + sec_filename + '.dat', 'r') as sec_file_in:
+
+                    subsector_list = []
+                    for line in sec_file_in:
+                        #print line[:len(line)-1]
+                        if line[:11] == '# Subsector':
+                            subsector_list.append(line[15:len(line)-1])
+
+                    #print(subsector_list)
+                    #print(subsector_list[subxx + subyy*4], subsector_list[subxx+1 + subyy*4])
+                    subsector_names = []
+                    subsector_names.append(subsector_list[subxx + subyy*4])
+                    subsector_names.append(subsector_list[subxx+1 + subyy*4])
+                    #print(subsector_names[x])
                     
                     color = gray
                     pygame.draw.rect(screen, color, (x*512, 0, 512, 703), DOT_SIZE*2)
-                    
+
                     for i in range(8):
                         for j in range(10):
                             
@@ -956,7 +972,7 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                 parsec_loc += str(p_row)
                                 
                             color = gray
-                            
+
                             font = pygame.font.SysFont('Eras ITC Demi', 12, False, False)
                             text = font.render(parsec_loc, True, color)
                             
@@ -995,12 +1011,16 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                     if show_loc:
                                         screen.blit(text, [i*64 + 14 + x*512, j*70.4 + 36])
                     
-                    subsector_list = []
-                    
+                    color = medium_gray
+                            
+                    font = pygame.font.SysFont('Eras ITC Demi', 96, False, False)
+                    text = font.render(subsector_names[x], True, color)
+                    text.set_alpha(180)
+                    width = len(subsector_names[x])
+                    screen.blit(text, [x*512 + 256 - width*36/2, 100])
+
+                    sec_file_in.seek(0)
                     for line in sec_file_in:
-                        #print line[:len(line)-1]
-                        if line[:11] == '# Subsector':
-                            subsector_list.append(line[15:len(line)-1])
                         read_line += 1
                         if read_line == 4:
                             sector_name = line[2:len(line)-1]
@@ -1188,24 +1208,12 @@ def display_map(xx=0, yy=0, zoom=1, grid_style='RECT_grid', zone_style='circled'
                                                                           int((temp_y-1)*70.4) + 12])
                                             screen.blit(world_uwp_text, [int((temp_x-1)*64 + 24 - 25 + x*512),
                                                                          int((temp_y-1)*70.4) + 52])
-                    
-                    #print subsector_list
-                    #print subsector_list[subxx + subyy*4], subsector_list[subxx+1 + subyy*4]
-                    subsector_names = []
-                    subsector_names.append(subsector_list[subxx + subyy*4])
-                    subsector_names.append(subsector_list[subxx+1 + subyy*4])
-                    #print subsector_names
-                    
-                                            
+
             except IOError:
                 #print 'No ' + sec_filename + '.dat'
                 log.warning("Missing '" + sec_filename + ".dat' file for viewing subsectors [Warning]")
                 mapper_log.warning("Subsector Display Warning! '" + sec_filename + ".dat' is missing.")
-        
-        
-        
-        
-        
+
     pygame.display.update()
     
     if zoom == 1:
