@@ -79,19 +79,6 @@ Pressing ``g`` will toggle the hex/rectangle grid on/off.
 Pressing ``ESC`` will exit the program.
 
 
-Not Using Python?
------------------
-
-You can always run the .EXE versions for Windows 11 if you don't have the Python language installed.
-
-.. |ss| raw:: html
-
-    <strike>
-
-.. |se| raw:: html
-
-    </strike>
-
 Things To-Do
 ------------
 
@@ -101,20 +88,10 @@ Things To-Do
 | Instruction manual.
 | Add proper allegiance distribution across a sector.
 | Cheat codes.
-|ss|
 
-| Update requirements for Python 3.11.0 use.
-| Zero-Water worlds got a make-over in mapper 1.2.1b.
-| Replace PyDiceroll with newer pydice module.
-| Removed requirement for colorama.
-| Put back "some" Traveller 5 stuff that was removed.
-| Add number of worlds for each system (a T5 trait).
-| Add option for Super-Earths (another T5 trait).
-| Start on a To-Do.
 
-|se|
-
-**Known History**
+Known History
+-------------
 
 * v0.6.0b
 
